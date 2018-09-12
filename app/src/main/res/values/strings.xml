@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">AppSimples</string>
+    <string name="title_empreendimento">Empreendimento</string>
+    <string name="title_cliente">Cliente</string>
+    <string name="title_grafico">Grafico</string>
+
+    <string name="title_detalhe_cliente">CLIENTE</string>
+    <string name="title_detalhe_status">STATUS</string>
+    <string name="title_detalhe_contrato">CONTRATO</string>
+    <string name="title_detalhe_devido">DEVIDO</string>
+    <string name="title_detalhe_recebido">RECEBIDO</string>
+
+
+    <string name="prompt_valor_projetado">Valor Projetado m2:</string>
+    <string name="prompt_lancamento">Lançamento:</string>
+    <string name="prompt_inicio_obra">Inicio Obra:</string>
+    <string name="prompt_final_obra">Final Obra:</string>
+</resources>

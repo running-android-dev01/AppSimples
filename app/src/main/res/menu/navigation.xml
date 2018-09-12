@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_empreendimento"
+        android:icon="@drawable/ic_domain_black_24dp"
+        android:title="@string/title_empreendimento" />
+
+    <item
+        android:id="@+id/navigation_cliente"
+        android:icon="@drawable/ic_group_black_24dp"
+        android:title="@string/title_cliente" />
+
+    <item
+        android:id="@+id/navigation_grafico"
+        android:icon="@drawable/ic_show_chart_black_24dp"
+        android:title="@string/title_grafico" />
+
+</menu>

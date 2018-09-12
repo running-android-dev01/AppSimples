@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtApto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text=""
+        android:gravity="start"
+        style="@style/Base.TextAppearance.AppCompat.Body2"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtNome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text=""
+        android:gravity="start"
+        style="@style/Base.TextAppearance.AppCompat.Body2"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtStatus"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text=""
+        android:gravity="center"
+        style="@style/Base.TextAppearance.AppCompat.Body2"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtContrato"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text=""
+        android:gravity="end"
+        style="@style/Base.TextAppearance.AppCompat.Body2"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtDevido"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text=""
+        android:gravity="end"
+        style="@style/Base.TextAppearance.AppCompat.Body2"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtRecebido"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text=""
+        android:gravity="end"
+        style="@style/Base.TextAppearance.AppCompat.Body2"
+        />
+
+</LinearLayout>
