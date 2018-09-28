@@ -6,12 +6,12 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
-import com.moraes.igor.appsimples.mode.Empreendimento;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.moraes.igor.appsimples.Json.CostCenters;
+import com.moraes.igor.appsimples.Json.CostCentersResult;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recycler_view;
@@ -45,6 +45,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void carregarLista(){
+        new carregarCentroCusto().execute();
+
+
+
+        /*
         List<Empreendimento> lEmpreendimento = new ArrayList<>();
 
         Empreendimento empreendimento1 = new Empreendimento();
@@ -96,6 +101,44 @@ public class MainActivity extends AppCompatActivity {
         lEmpreendimento.add(empreendimento1);
         lEmpreendimento.add(empreendimento2);
 
-        adapter.atualizarLista(lEmpreendimento);
+        adapter.atualizarLista(lEmpreendimento);*/
+    }
+
+    class carregarCentroCusto extends AsyncTask<Void, String, CostCenters> {
+        private ProgressDialog progresso;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progresso = ProgressDialog.show(MainActivity.this, "", "Carregando dados");
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected CostCenters doInBackground(Void... params) {
+
+            RecipesController recipesController = new RecipesController(MainActivity.this);
+            return recipesController.getCostCenters();
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected void onPostExecute(final CostCenters costCenters) {
+            if (progresso != null) {
+                progresso.dismiss();
+            }
+            if (costCenters!=null){
+                adapter.atualizarLista(costCenters.costCentersResults);
+            }
+
+        }
+
+        @Override
+        protected void onProgressUpdate(String... values) {
+            super.onProgressUpdate(values);
+            if (progresso != null) {
+                progresso.setMessage(values[0]);
+            }
+        }
     }
 }

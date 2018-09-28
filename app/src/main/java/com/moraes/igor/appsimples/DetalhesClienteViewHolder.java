@@ -6,22 +6,21 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class DetalhesClienteViewHolder extends RecyclerView.ViewHolder {
-
-    AppCompatTextView txtApto;
-    AppCompatTextView txtNome;
-    AppCompatTextView txtStatus;
-    AppCompatTextView txtContrato;
-    AppCompatTextView txtDevido;
-    AppCompatTextView txtRecebido;
+    final AppCompatTextView txtApto;
+    final AppCompatTextView txtContrato;
+    final AppCompatTextView txtReceber;
+    final AppCompatTextView txtRecebido;
+    final AppCompatTextView txtPercentRecebido;
+    final AppCompatTextView txtSituacao;
 
     DetalhesClienteViewHolder(View itemView) {
         super(itemView);
 
         txtApto =  itemView.findViewById(R.id.txtApto);
-        txtNome =  itemView.findViewById(R.id.txtNome);
-        txtStatus =  itemView.findViewById(R.id.txtStatus);
         txtContrato =  itemView.findViewById(R.id.txtContrato);
-        txtDevido =  itemView.findViewById(R.id.txtDevido);
+        txtReceber =  itemView.findViewById(R.id.txtReceber);
         txtRecebido =  itemView.findViewById(R.id.txtRecebido);
+        txtPercentRecebido =  itemView.findViewById(R.id.txtPercentRecebido);
+        txtSituacao =  itemView.findViewById(R.id.txtSituacao);
     }
 }

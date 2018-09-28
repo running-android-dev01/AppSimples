@@ -1,11 +1,22 @@
 package com.moraes.igor.appsimples;
 
+import android.app.ProgressDialog;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.moraes.igor.appsimples.Json.CostCenters;
+import com.moraes.igor.appsimples.Json.CostCentersResult;
+import com.moraes.igor.appsimples.Json.ReceivableBills;
+import com.moraes.igor.appsimples.Json.ReceivableBillsInstallment;
+import com.moraes.igor.appsimples.Json.ReceivableBillsInstallmentResult;
+import com.moraes.igor.appsimples.Json.SalesContracts;
+import com.moraes.igor.appsimples.Json.SalesContractsResult;
+import com.moraes.igor.appsimples.Json.Units;
+import com.moraes.igor.appsimples.Json.UnitsResult;
 import com.moraes.igor.appsimples.mode.Empreendimento;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +28,9 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DetalhesActivity extends AppCompatActivity
         implements DetalhesEmpreendimentoFragment.OnFragmentInteractionListener
         , DetalhesClienteFragment.OnFragmentInteractionListener
@@ -24,6 +38,12 @@ public class DetalhesActivity extends AppCompatActivity
 
     private final static String TAG = DetalhesActivity.class.getName();
     public final static String EMPREENDIMENTO = TAG + ".empreendimento" ;
+
+    public CostCentersResult costCentersResult;
+    public SalesContractsResult salesContractsResult;
+    public List<UnitsResult> unitsResults;
+    public ReceivableBills receivableBills;
+    public List<ReceivableBillsInstallmentResult> receivableBillsInstallmentResults;
 
     private Empreendimento empreendimento;
 
@@ -57,9 +77,9 @@ public class DetalhesActivity extends AppCompatActivity
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        onFrag(DetalhesEmpreendimentoFragment.newInstance());
+        costCentersResult = (CostCentersResult) getIntent().getSerializableExtra(EMPREENDIMENTO);
 
-        empreendimento = (Empreendimento)getIntent().getSerializableExtra(EMPREENDIMENTO);
+        new carregarDados().execute();
     }
 
     private void setUpToolbar() {
@@ -96,5 +116,93 @@ public class DetalhesActivity extends AppCompatActivity
     @Override
     public Empreendimento getEmpreendimento() {
         return empreendimento;
+    }
+
+    @Override
+    public CostCentersResult getCostCenters(){
+        return costCentersResult;
+    }
+
+    @Override
+    public List<UnitsResult> getUnits(){
+        return unitsResults;
+    }
+
+    @Override
+    public SalesContractsResult getSalesContracts(){
+        return salesContractsResult;
+    }
+
+    @Override
+    public ReceivableBills getReceivableBills(){
+        return receivableBills;
+    }
+
+    @Override
+    public List<ReceivableBillsInstallmentResult> getReceivableBillsInstallments(){
+        return receivableBillsInstallmentResults;
+    }
+
+    class carregarDados extends AsyncTask<Void, String, Object> {
+        private ProgressDialog progresso;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progresso = ProgressDialog.show(DetalhesActivity.this, "", "Carregando dados");
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected CostCenters doInBackground(Void... params) {
+
+            unitsResults = new ArrayList<>();
+            receivableBillsInstallmentResults = new ArrayList<>();
+
+            RecipesController recipesController = new RecipesController(DetalhesActivity.this);
+            SalesContracts salesContracts = recipesController.getSalesContracts();
+            Units units = recipesController.getUnits();
+
+            if (salesContracts!=null){
+                for (SalesContractsResult s: salesContracts.costCentersResults) {
+                    if (s.enterpriseId==costCentersResult.id){
+                        salesContractsResult = s;
+
+                        receivableBills = recipesController.getReceivableBills(s.receivableBillId);
+
+                        ReceivableBillsInstallment receivableBillsInstallment = recipesController.getReceivableBillsInstallment(s.receivableBillId);
+                        if (receivableBillsInstallment!=null){
+                            receivableBillsInstallmentResults.addAll(receivableBillsInstallment.costCentersResults);
+                        }
+                    }
+                }
+            }
+
+            if (units!=null){
+                for (UnitsResult u: units.unitsResults) {
+                    if (u.enterpriseId==costCentersResult.id){
+                        unitsResults.add(u);
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+            if (progresso != null) {
+                progresso.dismiss();
+            }
+            onFrag(DetalhesEmpreendimentoFragment.newInstance());
+        }
+
+        @Override
+        protected void onProgressUpdate(String... values) {
+            super.onProgressUpdate(values);
+            if (progresso != null) {
+                progresso.setMessage(values[0]);
+            }
+        }
     }
 }

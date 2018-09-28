@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.moraes.igor.appsimples.Json.CostCentersResult;
 import com.moraes.igor.appsimples.mode.Empreendimento;
 
 import java.util.List;
@@ -14,7 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MainAdapter extends RecyclerView.Adapter<MainViewHolder> {
-    private List<Empreendimento> lEmpreendimento;
+    private List<CostCentersResult> lCostCentersResult;
     private final Context context;
 
 
@@ -22,8 +23,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainViewHolder> {
         this.context = context;
     }
 
-    void atualizarLista(List<Empreendimento> lEmpreendimento){
-        this.lEmpreendimento = lEmpreendimento;
+    void atualizarLista(List<CostCentersResult> lCostCentersResult){
+        this.lCostCentersResult = lCostCentersResult;
         notifyDataSetChanged();
     }
 
@@ -35,17 +36,19 @@ public class MainAdapter extends RecyclerView.Adapter<MainViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MainViewHolder holder, int position) {
-        final Empreendimento empreendimento = lEmpreendimento.get(position);
+        final CostCentersResult costCentersResult = lCostCentersResult.get(position);
 
 
-        holder.txtEmpreendimento.setText(empreendimento.empreendimento);
-        holder.txtEndereco.setText(empreendimento.endereco);
+        holder.txtEmpreendimento.setText(costCentersResult.name);
+        holder.txtEndereco.setText(costCentersResult.endereco);
+        holder.txtResponsavelTecnico.setText(String.format("Responsavel tecnico: %s", costCentersResult.responsavel));
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(context, DetalhesActivity.class);
-                i.putExtra(DetalhesActivity.EMPREENDIMENTO, empreendimento);
+                i.putExtra(DetalhesActivity.EMPREENDIMENTO, costCentersResult);
                 context.startActivity(i);
             }
         });
@@ -53,6 +56,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainViewHolder> {
 
     @Override
     public int getItemCount() {
-        return lEmpreendimento != null ? lEmpreendimento.size() : 0;
+        return lCostCentersResult != null ? lCostCentersResult.size() : 0;
     }
 }

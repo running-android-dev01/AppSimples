@@ -5,7 +5,7 @@ android {
     defaultConfig {
         applicationId "com.moraes.igor.appsimples"
         minSdkVersion 14
-        targetSdkVersion 28
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         vectorDrawables.useSupportLibrary = true
@@ -16,16 +16,31 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+    }
+    buildToolsVersion '28.0.2'
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0-rc02'
-    implementation 'androidx.appcompat:appcompat:1.0.0-rc02'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0-rc02'
-    implementation 'androidx.cardview:cardview:1.0.0-rc02'
-    implementation 'androidx.mediarouter:mediarouter:1.0.0-beta01'
-    implementation 'com.google.android.material:material:1.0.0-rc01'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
-    implementation 'androidx.vectordrawable:vectordrawable:1.0.0-alpha1'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.mediarouter:mediarouter:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.vectordrawable:vectordrawable:1.0.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.2'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.9.2'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.9.2'
+
 }

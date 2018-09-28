@@ -35,6 +35,14 @@
             android:text=""
             style="@style/Base.TextAppearance.AppCompat.Subhead" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtResponsavelTecnico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:text=""
+            style="@style/Base.TextAppearance.AppCompat.Subhead" />
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

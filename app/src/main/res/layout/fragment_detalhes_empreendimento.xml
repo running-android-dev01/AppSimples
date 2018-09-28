@@ -52,101 +52,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtEmpreendimento"
                     />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtValorProjetadoDesc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="2dp"
-                    android:text="@string/prompt_valor_projetado"
-                    style="@style/Base.TextAppearance.AppCompat.Body1"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txtValorProjetado"
-                    />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtValorProjetado"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:padding="2dp"
-                    android:text=""
-                    style="@style/Base.TextAppearance.AppCompat.Body2"
-                    app:layout_constraintStart_toEndOf="@+id/txtValorProjetadoDesc"
-                    app:layout_constraintTop_toBottomOf="@+id/txtEndereco"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtLancamentoDesc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="2dp"
-                    android:text="@string/prompt_lancamento"
-                    style="@style/Base.TextAppearance.AppCompat.Body1"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txtLancamento"
-                    />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtLancamento"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:padding="2dp"
-                    android:text=""
-                    style="@style/Base.TextAppearance.AppCompat.Body2"
-                    app:layout_constraintStart_toEndOf="@+id/txtLancamentoDesc"
-                    app:layout_constraintTop_toBottomOf="@+id/txtValorProjetado"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    />
-
-
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtInicioObrasDesc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="2dp"
-                    android:text="@string/prompt_inicio_obra"
-                    style="@style/Base.TextAppearance.AppCompat.Body1"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txtInicioObras"
-
-                    />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtInicioObras"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:padding="2dp"
-                    android:text=""
-                    style="@style/Base.TextAppearance.AppCompat.Body2"
-                    app:layout_constraintStart_toEndOf="@+id/txtInicioObrasDesc"
-                    app:layout_constraintTop_toBottomOf="@+id/txtLancamento"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtFinalObrasDesc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="2dp"
-                    android:text="@string/prompt_final_obra"
-                    style="@style/Base.TextAppearance.AppCompat.Body1"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txtFinalObras"
-                    />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtFinalObras"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:padding="2dp"
-                    android:text=""
-                    style="@style/Base.TextAppearance.AppCompat.Body2"
-                    app:layout_constraintStart_toEndOf="@+id/txtFinalObrasDesc"
-                    app:layout_constraintTop_toBottomOf="@+id/txtInicioObras"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
@@ -168,6 +73,54 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtValorProjetadoDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text="Valor m2 projetado:"
+                    style="@style/Base.TextAppearance.AppCompat.Body1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txtValorProjetado"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtValorProjetado"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text=""
+                    style="@style/Base.TextAppearance.AppCompat.Body2"
+                    app:layout_constraintStart_toEndOf="@+id/txtValorProjetadoDesc"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtPavimentosDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text="Pavimentos:"
+                    style="@style/Base.TextAppearance.AppCompat.Body1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txtPavimentos"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtPavimentos"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text=""
+                    style="@style/Base.TextAppearance.AppCompat.Body2"
+                    app:layout_constraintStart_toEndOf="@+id/txtPavimentosDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/txtValorProjetado"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+
+
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/txtUnidadesDesc"
                     android:layout_width="wrap_content"
@@ -178,7 +131,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/txtUnidades"
                     />
-
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/txtUnidades"
                     android:layout_width="0dp"
@@ -187,78 +139,239 @@
                     android:text=""
                     style="@style/Base.TextAppearance.AppCompat.Body2"
                     app:layout_constraintStart_toEndOf="@+id/txtUnidadesDesc"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtPavimentos"
                     app:layout_constraintEnd_toEndOf="parent"
                     />
 
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtUnidadesVendidasDesc"
+                    android:id="@+id/txtAreaTotalTerrenoDesc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
-                    android:text="Vendidas:"
+                    android:text="Área total do terreno:"
                     style="@style/Base.TextAppearance.AppCompat.Body1"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txtUnidadesVendidas"
+                    app:layout_constraintTop_toTopOf="@+id/txtAreaTotalTerreno"
                     />
-
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtUnidadesVendidas"
+                    android:id="@+id/txtAreaTotalTerreno"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
                     android:text=""
                     style="@style/Base.TextAppearance.AppCompat.Body2"
-                    app:layout_constraintStart_toEndOf="@+id/txtUnidadesVendidasDesc"
+                    app:layout_constraintStart_toEndOf="@+id/txtAreaTotalTerrenoDesc"
                     app:layout_constraintTop_toBottomOf="@+id/txtUnidades"
                     app:layout_constraintEnd_toEndOf="parent"
                     />
 
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtUnidadesDisponivelDesc"
+                    android:id="@+id/txtInicioDasObrasDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text="Inicio das Obras:"
+                    style="@style/Base.TextAppearance.AppCompat.Body1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txtInicioDasObras"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtInicioDasObras"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text=""
+                    style="@style/Base.TextAppearance.AppCompat.Body2"
+                    app:layout_constraintStart_toEndOf="@+id/txtInicioDasObrasDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/txtAreaTotalTerreno"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtFimDasObrasDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text="Fim das Obras:"
+                    style="@style/Base.TextAppearance.AppCompat.Body1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txtFimDasObras"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtFimDasObras"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text=""
+                    style="@style/Base.TextAppearance.AppCompat.Body2"
+                    app:layout_constraintStart_toEndOf="@+id/txtFimDasObrasDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/txtInicioDasObras"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtEntregaDeChavesDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text="Entrega das Chaves:"
+                    style="@style/Base.TextAppearance.AppCompat.Body1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txtEntregaDeChaves"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtEntregaDeChaves"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text=""
+                    style="@style/Base.TextAppearance.AppCompat.Body2"
+                    app:layout_constraintStart_toEndOf="@+id/txtEntregaDeChavesDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/txtFimDasObras"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtDuracaoAteMomentoDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text="Duração até o momento:"
+                    style="@style/Base.TextAppearance.AppCompat.Body1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txtDuracaoAteMomento"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtDuracaoAteMomento"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text=""
+                    style="@style/Base.TextAppearance.AppCompat.Body2"
+                    app:layout_constraintStart_toEndOf="@+id/txtDuracaoAteMomentoDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/txtEntregaDeChaves"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtFaltamATerminarDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text="Faltam para terminar:"
+                    style="@style/Base.TextAppearance.AppCompat.Body1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txtFaltamATerminar"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtFaltamATerminar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text=""
+                    style="@style/Base.TextAppearance.AppCompat.Body2"
+                    app:layout_constraintStart_toEndOf="@+id/txtFaltamATerminarDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/txtDuracaoAteMomento"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtVendidasDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text="Vendidas:"
+                    style="@style/Base.TextAppearance.AppCompat.Body1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txtVendidas"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtVendidas"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text=""
+                    style="@style/Base.TextAppearance.AppCompat.Body2"
+                    app:layout_constraintStart_toEndOf="@+id/txtVendidasDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/txtFaltamATerminar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtDisponivelDesc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
                     android:text="Disponíveis:"
                     style="@style/Base.TextAppearance.AppCompat.Body1"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txtUnidadesDisponivel"
+                    app:layout_constraintTop_toTopOf="@+id/txtDisponivel"
                     />
-
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtUnidadesDisponivel"
+                    android:id="@+id/txtDisponivel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
                     android:text=""
                     style="@style/Base.TextAppearance.AppCompat.Body2"
-                    app:layout_constraintStart_toEndOf="@+id/txtUnidadesDisponivelDesc"
-                    app:layout_constraintTop_toBottomOf="@+id/txtUnidadesVendidas"
+                    app:layout_constraintStart_toEndOf="@+id/txtDisponivelDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/txtVendidas"
                     app:layout_constraintEnd_toEndOf="parent"
                     />
 
+
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtUnidadesOutrasDesc"
+                    android:id="@+id/txtAlugadasDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text="Alugadas:"
+                    style="@style/Base.TextAppearance.AppCompat.Body1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txtAlugadas"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtAlugadas"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text=""
+                    style="@style/Base.TextAppearance.AppCompat.Body2"
+                    app:layout_constraintStart_toEndOf="@+id/txtAlugadasDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/txtDisponivel"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtOutrasDesc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
                     android:text="Outras:"
                     style="@style/Base.TextAppearance.AppCompat.Body1"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txtUnidadesOutras"
+                    app:layout_constraintTop_toTopOf="@+id/txtOutras"
                     />
-
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtUnidadesOutras"
+                    android:id="@+id/txtOutras"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
                     android:text=""
                     style="@style/Base.TextAppearance.AppCompat.Body2"
-                    app:layout_constraintStart_toEndOf="@+id/txtUnidadesOutrasDesc"
-                    app:layout_constraintTop_toBottomOf="@+id/txtUnidadesDisponivel"
+                    app:layout_constraintStart_toEndOf="@+id/txtOutrasDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/txtAlugadas"
                     app:layout_constraintEnd_toEndOf="parent"
                     />
 
@@ -273,7 +386,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/txtVgv"
                     />
-
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/txtVgv"
                     android:layout_width="0dp"
@@ -282,176 +394,105 @@
                     android:text=""
                     style="@style/Base.TextAppearance.AppCompat.Body2"
                     app:layout_constraintStart_toEndOf="@+id/txtVgvDesc"
-                    app:layout_constraintTop_toBottomOf="@+id/txtUnidadesOutras"
+                    app:layout_constraintTop_toBottomOf="@+id/txtOutras"
                     app:layout_constraintEnd_toEndOf="parent"
                     />
 
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtVendasDesc"
+                    android:id="@+id/txtVendidoDesc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
-                    android:text="Vendas:"
+                    android:text="Vendido:"
                     style="@style/Base.TextAppearance.AppCompat.Body1"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txtVendas"
+                    app:layout_constraintTop_toTopOf="@+id/txtVendido"
                     />
-
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtVendas"
+                    android:id="@+id/txtVendido"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
                     android:text=""
                     style="@style/Base.TextAppearance.AppCompat.Body2"
-                    app:layout_constraintStart_toEndOf="@+id/txtVendasDesc"
+                    app:layout_constraintStart_toEndOf="@+id/txtVendidoDesc"
                     app:layout_constraintTop_toBottomOf="@+id/txtVgv"
                     app:layout_constraintEnd_toEndOf="parent"
                     />
 
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtRecebidosDesc"
+                    android:id="@+id/txtAVenderDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text="A Vender:"
+                    style="@style/Base.TextAppearance.AppCompat.Body1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txtAVender"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtAVender"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text=""
+                    style="@style/Base.TextAppearance.AppCompat.Body2"
+                    app:layout_constraintStart_toEndOf="@+id/txtAVenderDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/txtVendido"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtRecebidoDesc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
                     android:text="Recebido:"
                     style="@style/Base.TextAppearance.AppCompat.Body1"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txtRecebidos"
+                    app:layout_constraintTop_toTopOf="@+id/txtRecebido"
                     />
-
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtRecebidos"
+                    android:id="@+id/txtRecebido"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
                     android:text=""
                     style="@style/Base.TextAppearance.AppCompat.Body2"
-                    app:layout_constraintStart_toEndOf="@+id/txtRecebidosDesc"
-                    app:layout_constraintTop_toBottomOf="@+id/txtVendas"
+                    app:layout_constraintStart_toEndOf="@+id/txtRecebidoDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/txtAVender"
                     app:layout_constraintEnd_toEndOf="parent"
                     />
 
 
+
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtVgvCustoDesc"
+                    android:id="@+id/txtAReceberDesc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
-                    android:text="VGV x Vendas:"
+                    android:text="A Receber:"
                     style="@style/Base.TextAppearance.AppCompat.Body1"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txtVgvCusto"
+                    app:layout_constraintTop_toTopOf="@+id/txtAReceber"
                     />
-
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtVgvCusto"
+                    android:id="@+id/txtAReceber"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
                     android:text=""
                     style="@style/Base.TextAppearance.AppCompat.Body2"
-                    app:layout_constraintStart_toEndOf="@+id/txtVgvCustoDesc"
-                    app:layout_constraintTop_toBottomOf="@+id/txtRecebidos"
+                    app:layout_constraintStart_toEndOf="@+id/txtAReceberDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/txtRecebido"
                     app:layout_constraintEnd_toEndOf="parent"
                     />
 
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtCustoOrcamentoDesc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="2dp"
-                    android:text="Custos orçado:"
-                    style="@style/Base.TextAppearance.AppCompat.Body1"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txtCustoOrcamento"
-                    />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtCustoOrcamento"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:padding="2dp"
-                    android:text=""
-                    style="@style/Base.TextAppearance.AppCompat.Body2"
-                    app:layout_constraintStart_toEndOf="@+id/txtCustoOrcamentoDesc"
-                    app:layout_constraintTop_toBottomOf="@+id/txtVgvCusto"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtCustoIncorridoDesc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="2dp"
-                    android:text="Custos incorrido:"
-                    style="@style/Base.TextAppearance.AppCompat.Body1"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txtCustoIncorrido"
-                    />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtCustoIncorrido"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:padding="2dp"
-                    android:text=""
-                    style="@style/Base.TextAppearance.AppCompat.Body2"
-                    app:layout_constraintStart_toEndOf="@+id/txtCustoIncorridoDesc"
-                    app:layout_constraintTop_toBottomOf="@+id/txtCustoOrcamento"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    />
-
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtResultadoAtualDesc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="2dp"
-                    android:text="Resultado atual:"
-                    style="@style/Base.TextAppearance.AppCompat.Body1"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txtResultadoAtual"
-                    />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtResultadoAtual"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:padding="2dp"
-                    android:text=""
-                    style="@style/Base.TextAppearance.AppCompat.Body2"
-                    app:layout_constraintStart_toEndOf="@+id/txtResultadoAtualDesc"
-                    app:layout_constraintTop_toBottomOf="@+id/txtCustoIncorrido"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    />
-
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtSaldoDevedorDesc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="2dp"
-                    android:text="Saldo devedor presente:"
-                    style="@style/Base.TextAppearance.AppCompat.Body1"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txtSaldoDevedor"
-                    />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtSaldoDevedor"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:padding="2dp"
-                    android:text=""
-                    style="@style/Base.TextAppearance.AppCompat.Body2"
-                    app:layout_constraintStart_toEndOf="@+id/txtSaldoDevedorDesc"
-                    app:layout_constraintTop_toBottomOf="@+id/txtResultadoAtual"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>

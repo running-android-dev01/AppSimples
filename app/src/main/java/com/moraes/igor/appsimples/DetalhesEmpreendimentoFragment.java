@@ -12,13 +12,40 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.moraes.igor.appsimples.Json.CostCentersResult;
+import com.moraes.igor.appsimples.Json.ReceivableBills;
+import com.moraes.igor.appsimples.Json.ReceivableBillsInstallmentResult;
+import com.moraes.igor.appsimples.Json.SalesContractsResult;
+import com.moraes.igor.appsimples.Json.UnitsResult;
 import com.moraes.igor.appsimples.mode.Empreendimento;
 
+import java.util.List;
 import java.util.Locale;
 
 public class DetalhesEmpreendimentoFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
     private Locale locale = new Locale("pt-BR");
+
+    AppCompatTextView txtEmpreendimento;
+    AppCompatTextView txtEndereco;
+    AppCompatTextView txtValorProjetado;
+    AppCompatTextView txtPavimentos;
+    AppCompatTextView txtUnidades;
+    AppCompatTextView txtAreaTotalTerreno;
+    AppCompatTextView txtInicioDasObras;
+    AppCompatTextView txtFimDasObras;
+    AppCompatTextView txtEntregaDeChaves;
+    AppCompatTextView txtDuracaoAteMomento;
+    AppCompatTextView txtFaltamATerminar;
+    AppCompatTextView txtVendidas;
+    AppCompatTextView txtDisponivel;
+    AppCompatTextView txtAlugadas;
+    AppCompatTextView txtOutras;
+    AppCompatTextView txtVgv;
+    AppCompatTextView txtVendido;
+    AppCompatTextView txtAVender;
+    AppCompatTextView txtRecebido;
+    AppCompatTextView txtAReceber;
 
     static DetalhesEmpreendimentoFragment newInstance() {
         DetalhesEmpreendimentoFragment fragment = new DetalhesEmpreendimentoFragment();
@@ -32,47 +59,138 @@ public class DetalhesEmpreendimentoFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_detalhes_empreendimento, container, false);
 
-        AppCompatTextView txtEmpreendimento = view.findViewById(R.id.txtEmpreendimento);
-        AppCompatTextView txtEndereco = view.findViewById(R.id.txtEndereco);
-        AppCompatTextView txtValorProjetado = view.findViewById(R.id.txtValorProjetado);
-        AppCompatTextView txtLancamento = view.findViewById(R.id.txtLancamento);
-        AppCompatTextView txtInicioObras = view.findViewById(R.id.txtInicioObras);
-        AppCompatTextView txtFinalObras = view.findViewById(R.id.txtFinalObras);
 
-        AppCompatTextView txtUnidades = view.findViewById(R.id.txtUnidades);
-        AppCompatTextView txtUnidadesVendidas = view.findViewById(R.id.txtUnidadesVendidas);
-        AppCompatTextView txtUnidadesDisponivel = view.findViewById(R.id.txtUnidadesDisponivel);
-        AppCompatTextView txtUnidadesOutras = view.findViewById(R.id.txtUnidadesOutras);
-        AppCompatTextView txtVgv = view.findViewById(R.id.txtVgv);
-        AppCompatTextView txtVendas = view.findViewById(R.id.txtVendas);
-        AppCompatTextView txtRecebidos = view.findViewById(R.id.txtRecebidos);
-        AppCompatTextView txtVgvCusto = view.findViewById(R.id.txtVgvCusto);
-        AppCompatTextView txtCustoOrcamento = view.findViewById(R.id.txtCustoOrcamento);
-        AppCompatTextView txtCustoIncorrido = view.findViewById(R.id.txtCustoIncorrido);
-        AppCompatTextView txtResultadoAtual = view.findViewById(R.id.txtResultadoAtual);
-        AppCompatTextView txtSaldoDevedor = view.findViewById(R.id.txtSaldoDevedor);
+        txtEmpreendimento = view.findViewById(R.id.txtEmpreendimento);
+        txtEndereco = view.findViewById(R.id.txtEndereco);
+        txtValorProjetado = view.findViewById(R.id.txtValorProjetado);
+        txtPavimentos = view.findViewById(R.id.txtPavimentos);
+        txtUnidades = view.findViewById(R.id.txtUnidades);
+        txtAreaTotalTerreno = view.findViewById(R.id.txtAreaTotalTerreno);
+        txtInicioDasObras = view.findViewById(R.id.txtInicioDasObras);
+        txtFimDasObras = view.findViewById(R.id.txtFimDasObras);
+        txtEntregaDeChaves = view.findViewById(R.id.txtEntregaDeChaves);
+        txtDuracaoAteMomento = view.findViewById(R.id.txtDuracaoAteMomento);
+        txtFaltamATerminar = view.findViewById(R.id.txtFaltamATerminar);
+        txtVendidas = view.findViewById(R.id.txtVendidas);
+        txtDisponivel = view.findViewById(R.id.txtDisponivel);
+        txtAlugadas = view.findViewById(R.id.txtAlugadas);
+        txtOutras = view.findViewById(R.id.txtOutras);
+        txtVgv = view.findViewById(R.id.txtVgv);
+        txtVendido = view.findViewById(R.id.txtVendido);
+        txtAVender = view.findViewById(R.id.txtAVender);
+        txtRecebido = view.findViewById(R.id.txtRecebido);
+        txtAReceber = view.findViewById(R.id.txtAReceber);
 
-        Empreendimento empreendimento = mListener.getEmpreendimento();
+        //Empreendimento empreendimento = mListener.getEmpreendimento();
 
-        txtEmpreendimento.setText(empreendimento.empreendimento);
-        txtEndereco.setText(empreendimento.endereco);
-        txtValorProjetado.setText(String.format(locale, "%.2f", empreendimento.valorProjeto));
-        txtLancamento.setText(empreendimento.lancamento);
-        txtInicioObras.setText(empreendimento.inicioObra);
-        txtFinalObras.setText(empreendimento.finalObra);
+        CostCentersResult costCentersResult = mListener.getCostCenters();
+        SalesContractsResult salesContractsResult = mListener.getSalesContracts();
+        List<UnitsResult> unitsResults = mListener.getUnits();
+        ReceivableBills receivableBills = mListener.getReceivableBills();
+        List<ReceivableBillsInstallmentResult> receivableBillsInstallmentResults = mListener.getReceivableBillsInstallments();
 
-        txtUnidades.setText(String.format(locale, "%d", empreendimento.unidades));
-        txtUnidadesVendidas.setText(String.format(locale, "%d", empreendimento.unidadesVendidas));
-        txtUnidadesDisponivel.setText(String.format(locale, "%d", empreendimento.unidadesDisponivel));
-        txtUnidadesOutras.setText(String.format(locale, "%d", empreendimento.unidadesOutras));
-        txtVgv.setText(String.format(locale, "%.2f", empreendimento.vgv));
-        txtVendas.setText(String.format(locale, "%.2f (51 VGV)", empreendimento.vendas));
-        txtRecebidos.setText(String.format(locale, "%.2f (29 VGV)", empreendimento.recebido));
-        txtVgvCusto.setText("+2,5%");
-        txtCustoOrcamento.setText(String.format(locale, "%.2f", empreendimento.custoOrcado));
-        txtCustoIncorrido.setText(String.format(locale, "%.2f  (24 ORC)", empreendimento.custoIncorrido));
-        txtResultadoAtual.setText(String.format(locale, "%.2f", empreendimento.resultadoAtual));
-        txtSaldoDevedor.setText(String.format(locale, "%.2f", empreendimento.saldoDevedor));
+
+        txtEmpreendimento.setText(costCentersResult.name);
+        txtEndereco.setText(costCentersResult.endereco);
+
+        String empreendimento = costCentersResult.name;
+        String endereco = costCentersResult.endereco;
+        String valorProjetado = "-";
+        String pavimentos = "-";
+        String unidades = String.format(locale, "%d", unitsResults.size());
+        String areaTotalTerreno = "-";
+        String inicioDasObras = "-";
+        String fimDasObras = "-";
+        String entregaDeChaves = "-";
+        String duracaoAteMomento = "-";
+        String faltamATerminar = "-";
+        String vendidas = "-";
+        String disponivel = "-";
+        String alugadas = "-";
+        String outras = "-";
+        String vgv = "-";
+
+        String vendido = "-";
+        String aVender = "-";
+        String recebido = "-";
+        String aReceber = "-";
+
+        double valorTotal = 0.0;
+        if (salesContractsResult!=null){
+            valorTotal = salesContractsResult.totalSellingValue;
+            //valorProjetado = String.format(locale, "%.2f", (salesContractsResult.totalSellingValue/unitsResults.size()));
+            //vgv = String.format(locale, "%.2f", salesContractsResult.totalSellingValue);
+        }
+
+        double dAreaTotalTerreno = 0.0;
+        int iVendidas = 0;
+        int iDisponivel = 0;
+        int iAlugadas = 0;
+        int iOutras = 0;
+        double dValorProjetado = 0.0;
+        double dVgv = 0.0;
+        int area = 0;
+
+        for (UnitsResult u:unitsResults) {
+            if (u.commercialStock.equals("V")){
+                iVendidas += 1;
+            }else if (u.commercialStock.equals("D")){
+                iDisponivel += 1;
+            }else if (u.commercialStock.equals("L")){
+                iAlugadas += 1;
+            }else{
+                iOutras += 1;
+            }
+            dVgv += u.generalSaleValueFraction;
+            area += u.privateArea;
+
+            dAreaTotalTerreno += u.terrainArea;
+        }
+
+        valorProjetado = String.format(locale, "%.2f", (dVgv/area));
+        areaTotalTerreno = String.format(locale, "%.2f", dAreaTotalTerreno);
+        vgv = String.format(locale, "%.2f", dVgv);
+
+
+        vendidas = String.format(locale, "%d", iVendidas);
+        disponivel = String.format(locale, "%d", iDisponivel);
+        alugadas = String.format(locale, "%d", iAlugadas);
+        outras = String.format(locale, "%d", iOutras);
+
+
+        txtEmpreendimento.setText(empreendimento);
+        txtEndereco.setText(endereco);
+        txtValorProjetado.setText(valorProjetado);
+        txtPavimentos.setText(pavimentos);
+        txtUnidades.setText(unidades);
+        txtAreaTotalTerreno.setText(areaTotalTerreno);
+        txtInicioDasObras.setText(inicioDasObras);
+        txtFimDasObras.setText(fimDasObras);
+        txtEntregaDeChaves.setText(entregaDeChaves);
+        txtDuracaoAteMomento.setText(duracaoAteMomento);
+        txtFaltamATerminar.setText(faltamATerminar);
+        txtVendidas.setText(vendidas);
+        txtDisponivel.setText(disponivel);
+        txtAlugadas.setText(alugadas);
+        txtOutras.setText(outras);
+        txtVgv.setText(vgv);
+        txtVendido.setText(vendido);
+        txtAVender.setText(aVender);
+        txtRecebido.setText(recebido);
+        txtAReceber.setText(aReceber);
+
+        //txtUnidades.setText(String.format(locale, "%d", empreendimento.unidades));
+        //txtUnidadesVendidas.setText(String.format(locale, "%d", empreendimento.unidadesVendidas));
+        //txtUnidadesDisponivel.setText(String.format(locale, "%d", empreendimento.unidadesDisponivel));
+        //txtUnidadesOutras.setText(String.format(locale, "%d", empreendimento.unidadesOutras));
+        //txtVgv.setText(String.format(locale, "%.2f", empreendimento.vgv));
+        //txtVendas.setText(String.format(locale, "%.2f (51 VGV)", empreendimento.vendas));
+        //txtRecebidos.setText(String.format(locale, "%.2f (29 VGV)", empreendimento.recebido));
+        //txtVgvCusto.setText("+2,5%");
+        //txtCustoOrcamento.setText(String.format(locale, "%.2f", empreendimento.custoOrcado));
+        //txtCustoIncorrido.setText(String.format(locale, "%.2f  (24 ORC)", empreendimento.custoIncorrido));
+        //txtResultadoAtual.setText(String.format(locale, "%.2f", empreendimento.resultadoAtual));
+        //txtSaldoDevedor.setText(String.format(locale, "%.2f", empreendimento.saldoDevedor));
 
         return view;
     }
@@ -95,6 +213,10 @@ public class DetalhesEmpreendimentoFragment extends Fragment {
     }
 
     public interface OnFragmentInteractionListener {
-        Empreendimento getEmpreendimento();
+        CostCentersResult getCostCenters();
+        List<UnitsResult> getUnits();
+        SalesContractsResult getSalesContracts();
+        ReceivableBills getReceivableBills();
+        List<ReceivableBillsInstallmentResult> getReceivableBillsInstallments();
     }
 }
