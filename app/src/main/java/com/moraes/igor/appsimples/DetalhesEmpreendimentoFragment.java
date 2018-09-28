@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
 
+import android.util.TimeUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +20,10 @@ import com.moraes.igor.appsimples.Json.SalesContractsResult;
 import com.moraes.igor.appsimples.Json.UnitsResult;
 import com.moraes.igor.appsimples.mode.Empreendimento;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 public class DetalhesEmpreendimentoFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
@@ -93,22 +96,39 @@ public class DetalhesEmpreendimentoFragment extends Fragment {
         txtEmpreendimento.setText(costCentersResult.name);
         txtEndereco.setText(costCentersResult.endereco);
 
+        Calendar dataInicio = Calendar.getInstance();
+        dataInicio.set(Calendar.DAY_OF_MONTH,01);
+        dataInicio.set(Calendar.MONTH,0); // 0-11 so 1 less
+        dataInicio.set(Calendar.YEAR, 2019);
+
+        Calendar dataFim = Calendar.getInstance();
+        dataFim.set(Calendar.DAY_OF_MONTH,01);
+        dataFim.set(Calendar.MONTH,6); // 0-11 so 1 less
+        dataFim.set(Calendar.YEAR, 2019);
+
+        Calendar today = Calendar.getInstance();
+
+        long iDuracaoMomento = TimeUnit.MILLISECONDS.toDays(dataFim.getTimeInMillis() - dataInicio.getTimeInMillis()); //result in millis
+
+        long iFaltaTerminar = TimeUnit.MILLISECONDS.toDays(dataInicio.getTimeInMillis() - today.getTimeInMillis()); //result in millis
+
+
         String empreendimento = costCentersResult.name;
         String endereco = costCentersResult.endereco;
         String valorProjetado = "-";
         String pavimentos = "-";
         String unidades = String.format(locale, "%d", unitsResults.size());
-        String areaTotalTerreno = "-";
-        String inicioDasObras = "-";
-        String fimDasObras = "-";
-        String entregaDeChaves = "-";
-        String duracaoAteMomento = "-";
-        String faltamATerminar = "-";
+        String areaTotalTerreno = "800.000";
+        String inicioDasObras = "01/01/2019";
+        String fimDasObras = "01/07/2019";
+        String entregaDeChaves = "30/06/2019";
+        String duracaoAteMomento = String.format(locale, "%d", iDuracaoMomento);
+        String faltamATerminar = String.format(locale, "%d", iFaltaTerminar);
         String vendidas = "-";
         String disponivel = "-";
         String alugadas = "-";
         String outras = "-";
-        String vgv = "-";
+        String vgv = "4.800.000,00";
 
         String vendido = "-";
         String aVender = "-";
@@ -149,7 +169,7 @@ public class DetalhesEmpreendimentoFragment extends Fragment {
 
         valorProjetado = String.format(locale, "%.2f", (dVgv/area));
         areaTotalTerreno = String.format(locale, "%.2f", dAreaTotalTerreno);
-        vgv = String.format(locale, "%.2f", dVgv);
+        vgv = String.format(locale, "%.2f", 4800000.00);
 
 
         vendidas = String.format(locale, "%d", iVendidas);

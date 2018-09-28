@@ -12,7 +12,7 @@
         android:layout_weight="1"
         android:text=""
         android:gravity="end"
-        style="@style/Base.TextAppearance.AppCompat.Body2"
+        style="@style/Body2"
         />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -22,7 +22,7 @@
         android:layout_weight="1"
         android:text=""
         android:gravity="end"
-        style="@style/Base.TextAppearance.AppCompat.Body1"
+        style="@style/Body1"
         />
 
 </LinearLayout>

@@ -12,7 +12,7 @@
         android:layout_weight="1"
         android:text=""
         android:gravity="center"
-        style="@style/Base.TextAppearance.AppCompat.Body2"
+        style="@style/Body2"
         />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -22,7 +22,7 @@
         android:layout_weight="1"
         android:text="Contratos"
         android:gravity="center"
-        style="@style/Base.TextAppearance.AppCompat.Body2"
+        style="@style/Body2"
         />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -32,7 +32,7 @@
         android:layout_weight="1"
         android:text="A Receber"
         android:gravity="center"
-        style="@style/Base.TextAppearance.AppCompat.Body2"
+        style="@style/Body2"
         />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -42,7 +42,7 @@
         android:layout_weight="1"
         android:text="Recebido"
         android:gravity="center"
-        style="@style/Base.TextAppearance.AppCompat.Body2"
+        style="@style/Body2"
         />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -52,7 +52,7 @@
         android:layout_weight="1"
         android:text="% Recebido"
         android:gravity="center"
-        style="@style/Base.TextAppearance.AppCompat.Body2"
+        style="@style/Body2"
         />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -62,7 +62,7 @@
         android:layout_weight="1"
         android:text="Situação"
         android:gravity="center"
-        style="@style/Base.TextAppearance.AppCompat.Body2"
+        style="@style/Body2"
         />
 
 </LinearLayout>

@@ -13,6 +13,9 @@ import android.os.Bundle;
 import com.moraes.igor.appsimples.Json.CostCenters;
 import com.moraes.igor.appsimples.Json.CostCentersResult;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recycler_view;
     private MainAdapter adapter;
@@ -128,7 +131,13 @@ public class MainActivity extends AppCompatActivity {
                 progresso.dismiss();
             }
             if (costCenters!=null){
-                adapter.atualizarLista(costCenters.costCentersResults);
+                List<CostCentersResult> lCostCentersResult = new ArrayList<>();
+                for (CostCentersResult result: costCenters.costCentersResults) {
+                    if (result.id==12){
+                        lCostCentersResult.add(result);
+                    }
+                }
+                adapter.atualizarLista(lCostCentersResult);
             }
 
         }

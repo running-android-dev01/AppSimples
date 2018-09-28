@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:padding="2dp"
             android:text=""
-            style="@style/Base.TextAppearance.AppCompat.Headline" />
+            style="@style/Headline" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txtEndereco"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:padding="2dp"
             android:text=""
-            style="@style/Base.TextAppearance.AppCompat.Subhead" />
+            style="@style/Subhead" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txtResponsavelTecnico"
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:padding="2dp"
             android:text=""
-            style="@style/Base.TextAppearance.AppCompat.Subhead" />
+            style="@style/Subhead" />
 
     </LinearLayout>
 
