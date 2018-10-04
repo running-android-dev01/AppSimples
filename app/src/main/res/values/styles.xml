@@ -4,7 +4,7 @@
     <style name="BaseAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/primaryColor</item>
-        <item name="colorPrimaryDark">@color/primaryTextColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
         <item name="colorAccent">@color/secondaryColor</item>
     </style>
 
@@ -42,9 +42,5 @@
     <style name="Body4" parent="Base.TextAppearance.AppCompat.Body2">
         <item name="android:textSize">12sp</item>
     </style>
-
-
-
-
 
 </resources>

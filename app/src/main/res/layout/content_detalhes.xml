@@ -39,11 +39,11 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="8dp"
-                app:cardBackgroundColor="?attr/colorPrimaryDark"
                 app:cardCornerRadius="4dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                style="@style/CardView.Light"
                 >
 
                 <androidx.constraintlayout.widget.ConstraintLayout
