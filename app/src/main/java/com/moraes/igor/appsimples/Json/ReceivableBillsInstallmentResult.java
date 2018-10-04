@@ -18,7 +18,7 @@ public class ReceivableBillsInstallmentResult {
     public String dueDate;
 
     @JsonProperty("balanceDue")
-    public int balanceDue;
+    public double balanceDue;
 
     @JsonProperty("generatedTicket")
     public boolean generatedTicket;

@@ -1,12 +1,10 @@
 package com.moraes.igor.appsimples;
 
-import android.content.Context;
-import android.net.Uri;
 import android.util.Log;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.moraes.igor.appsimples.Json.BillsInstallment;
 import com.moraes.igor.appsimples.Json.CostCenters;
-import com.moraes.igor.appsimples.Json.ReceivableBills;
 import com.moraes.igor.appsimples.Json.ReceivableBillsInstallment;
 import com.moraes.igor.appsimples.Json.SalesContracts;
 import com.moraes.igor.appsimples.Json.Units;
@@ -31,20 +29,15 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.PasswordAuthentication;
 import java.net.URL;
-import java.util.Collections;
 
 class RecipesController {
-    private final Context context;
-
-
-    RecipesController(Context context) {
-        this.context = context;
+    RecipesController() {
     }
 
     private String getJson(String link){
         String retorno;
         URL url;
-        StringBuffer response = new StringBuffer();
+        StringBuilder response = new StringBuilder();
         try {
             url = new URL(link);
         } catch (MalformedURLException e) {
@@ -135,20 +128,6 @@ class RecipesController {
         return units;
     }
 
-
-    ReceivableBills getReceivableBills(int customerId ) {
-        ReceivableBills receivableBills = null;
-        try {
-            String json = getJson(String.format("https://api.sienge.com.br/construsoft/public/api/v1/accounts-receivable/receivable-bills/%s", Integer.toString(customerId)));
-
-            ObjectMapper mapper = new ObjectMapper();
-            receivableBills = mapper.readValue(json, ReceivableBills.class);
-        } catch (Exception e) {
-            Log.e(this.getClass().getName(), "ERRO = ", e);
-        }
-        return receivableBills;
-    }
-
     ReceivableBillsInstallment getReceivableBillsInstallment(int customerId ) {
         ReceivableBillsInstallment receivableBillsInstallment = null;
         try {
@@ -160,6 +139,20 @@ class RecipesController {
             Log.e(this.getClass().getName(), "ERRO = ", e);
         }
         return receivableBillsInstallment;
+    }
+
+
+    BillsInstallment getBillsInstallment(int customerId ) {
+        BillsInstallment billsInstallment = null;
+        try {
+            String json = getJson(String.format("https://api.sienge.com.br/construsoft/public/api/v1/bills/%s/installments", Integer.toString(customerId)));
+
+            ObjectMapper mapper = new ObjectMapper();
+            billsInstallment = mapper.readValue(json, BillsInstallment.class);
+        } catch (Exception e) {
+            Log.e(this.getClass().getName(), "ERRO = ", e);
+        }
+        return billsInstallment;
     }
 
 }

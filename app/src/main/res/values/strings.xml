@@ -3,16 +3,40 @@
     <string name="title_empreendimento">Empreendimento</string>
     <string name="title_cliente">Cliente</string>
     <string name="title_grafico">Grafico</string>
-
-    <string name="title_detalhe_cliente">CLIENTE</string>
-    <string name="title_detalhe_status">STATUS</string>
-    <string name="title_detalhe_contrato">CONTRATO</string>
-    <string name="title_detalhe_devido">DEVIDO</string>
-    <string name="title_detalhe_recebido">RECEBIDO</string>
+    <string name="title_configuracao">Configuração</string>
 
 
-    <string name="prompt_valor_projetado">Valor Projetado m2:</string>
-    <string name="prompt_lancamento">Lançamento:</string>
-    <string name="prompt_inicio_obra">Inicio Obra:</string>
-    <string name="prompt_final_obra">Final Obra:</string>
+    <string name="title_cliente_contratos">Contratos</string>
+    <string name="title_cliente_a_receber">A Receber</string>
+    <string name="title_cliente_recebido">Recebido</string>
+    <string name="title_cliente_percentual">% Recebido</string>
+    <string name="title_cliente_situacao">Situação</string>
+
+
+    <string name="title_empreendimento_valor_projetado">Valor m2 projetado:</string>
+    <string name="title_empreendimento_pavimento">Pavimentos:</string>
+    <string name="title_empreendimento_unidades">Unidades:</string>
+    <string name="title_empreendimento_area_total">Área total do terreno:</string>
+    <string name="title_empreendimento_inicio_obras">Inicio das Obras:</string>
+    <string name="title_empreendimento_fim_obras">Fim das Obras:</string>
+    <string name="title_empreendimento_entrega_chaves">Entrega das Chaves:</string>
+    <string name="title_empreendimento_duracao_momento">Duração até o momento:</string>
+    <string name="title_empreendimento_faltam_terminar">Faltam para terminar:</string>
+    <string name="title_empreendimento_vendidas">Vendidas:</string>
+    <string name="title_empreendimento_disponiveis">Disponíveis:</string>
+    <string name="title_empreendimento_alugadas">Alugadas:</string>
+    <string name="title_empreendimento_outras">Outras:</string>
+    <string name="title_empreendimento_vgv">VGV:</string>
+    <string name="title_empreendimento_vendido">Vendido:</string>
+    <string name="title_empreendimento_a_vender">A Vender:</string>
+    <string name="title_empreendimento_recebido">Recebido:</string>
+    <string name="title_empreendimento_a_receber">A Receber:</string>
+
+    <string name="title_grafico_valor_receber">(+)Valores a Receber:</string>
+    <string name="title_grafico_valor_pagar">(-)Valores a Pagar:</string>
+    <string name="title_grafico_valor_projetado">(=)Fluxo Projetado:</string>
+    <string name="title_grafico_valor_ate_30">0 a 30 dd:</string>
+    <string name="title_grafico_valor_ate_60">31 a 60 dd:</string>
+    <string name="title_grafico_valor_ate_120">61 a 120 dd:</string>
+    <string name="title_grafico_valor_acima_121">Acima  121 dd:</string>
 </resources>

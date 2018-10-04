@@ -3,21 +3,18 @@ package com.moraes.igor.appsimples;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import com.moraes.igor.appsimples.Json.CostCentersResult;
-import com.moraes.igor.appsimples.mode.Empreendimento;
 
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MainAdapter extends RecyclerView.Adapter<MainViewHolder> {
+class MainAdapter extends RecyclerView.Adapter<MainViewHolder> {
     private List<CostCentersResult> lCostCentersResult;
     private final Context context;
-
 
     MainAdapter(Context context){
         this.context = context;
@@ -44,13 +41,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainViewHolder> {
         holder.txtResponsavelTecnico.setText(String.format("Responsavel tecnico: %s", costCentersResult.responsavel));
 
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(context, DetalhesActivity.class);
-                i.putExtra(DetalhesActivity.EMPREENDIMENTO, costCentersResult);
-                context.startActivity(i);
-            }
+        holder.itemView.setOnClickListener(view -> {
+            Intent i = new Intent(context, DetalhesActivity.class);
+            i.putExtra(DetalhesActivity.EMPREENDIMENTO, costCentersResult);
+            context.startActivity(i);
         });
     }
 

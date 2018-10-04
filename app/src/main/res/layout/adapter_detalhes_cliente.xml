@@ -12,7 +12,7 @@
         android:layout_weight="1"
         android:text=""
         android:gravity="center"
-        style="@style/Body2"
+        style="@style/Body4"
         />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -20,9 +20,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Contratos"
+        android:text="@string/title_cliente_contratos"
         android:gravity="center"
-        style="@style/Body2"
+        style="@style/Body4"
         />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -30,9 +30,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="A Receber"
+        android:text="@string/title_cliente_a_receber"
         android:gravity="center"
-        style="@style/Body2"
+        style="@style/Body4"
         />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -40,9 +40,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Recebido"
+        android:text="@string/title_cliente_recebido"
         android:gravity="center"
-        style="@style/Body2"
+        style="@style/Body4"
         />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -50,9 +50,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="% Recebido"
+        android:text="@string/title_cliente_percentual"
         android:gravity="center"
-        style="@style/Body2"
+        style="@style/Body4"
         />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -60,9 +60,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Situação"
+        android:text="@string/title_cliente_situacao"
         android:gravity="center"
-        style="@style/Body2"
+        style="@style/Body4"
         />
 
 </LinearLayout>

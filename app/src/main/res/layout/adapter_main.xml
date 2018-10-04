@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:padding="2dp"
             android:text=""
-            style="@style/Subhead" />
+            style="@style/Body1" />
 
     </LinearLayout>
 

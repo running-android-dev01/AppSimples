@@ -5,24 +5,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.moraes.igor.appsimples.mode.Cliente;
-import com.moraes.igor.appsimples.mode.Grafico;
+
+import com.moraes.igor.appsimples.model.Contas;
 
 import java.util.List;
+import java.util.Locale;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class DetalhesGraficoAdapter extends RecyclerView.Adapter<DetalhesGraficoViewHolder> {
-    private final Context context;
-    private List<Grafico> lGrafico;
+class DetalhesGraficoAdapter extends RecyclerView.Adapter<DetalhesGraficoViewHolder> {
+    //private final Context context;
+    private List<Contas> lContas;
+    private final Locale current;
 
     DetalhesGraficoAdapter(Context context) {
-        this.context = context;
+        //this.context = context;
+        this.current = context.getApplicationContext().getResources().getConfiguration().locale;
     }
 
-    public void atualizarLista(List<Grafico> lGrafico) {
-        this.lGrafico = lGrafico;
+    public void atualizarLista(List<Contas> lContas) {
+        this.lContas = lContas;
         notifyDataSetChanged();
     }
 
@@ -41,14 +44,14 @@ public class DetalhesGraficoAdapter extends RecyclerView.Adapter<DetalhesGrafico
 
     @Override
     public void onBindViewHolder(@NonNull DetalhesGraficoViewHolder viewHolder, int position) {
-        final Grafico grafico = lGrafico.get(position);
+        final Contas grafico = lContas.get(position);
 
-        viewHolder.txtDescricao.setText(grafico.descricao);
-        viewHolder.txtValor.setText(grafico.valor);
+        viewHolder.txtDescricao.setText(grafico.titulo);
+        viewHolder.txtValor.setText(String.format(current, "%.2f", grafico.valor));
     }
 
     @Override
     public int getItemCount() {
-        return lGrafico != null ? lGrafico.size() : 0;
+        return lContas != null ? lContas.size() : 0;
     }
 }

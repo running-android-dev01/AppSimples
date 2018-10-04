@@ -13,11 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.moraes.igor.appsimples.mode.Empreendimento;
-import com.moraes.igor.appsimples.mode.Grafico;
+import com.moraes.igor.appsimples.model.Contas;
+import com.moraes.igor.appsimples.model.Empreendimento;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class DetalhesGraficoFragment extends Fragment {
@@ -69,104 +70,105 @@ public class DetalhesGraficoFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recycler_view.setLayoutManager(layoutManager);
 
-        adapter = new DetalhesGraficoAdapter(getActivity());
+        adapter = new DetalhesGraficoAdapter(Objects.requireNonNull(getActivity()));
         recycler_view.setAdapter(adapter);
 
         recycler_view.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
     }
 
     private void carregarLista(){
-        List<Grafico> lGrafico = new ArrayList<>();
+        Empreendimento empreendimento = mListener.getEmpreendimento();
+        List<Contas> lGrafico = new ArrayList<>();
 
-        Grafico gAReceber = new Grafico();
-        gAReceber.descricao = "(+)Valores a Receber:";
-        gAReceber.valor = "2.260.000,00";
+        Contas gAReceber = new Contas();
+        gAReceber.titulo = getString(R.string.title_grafico_valor_receber);
+        gAReceber.valor = empreendimento.valorAReceber;
         lGrafico.add(gAReceber);
 
-        Grafico gAReceber0a30 = new Grafico();
-        gAReceber0a30.descricao = "0 a 30 dd:";
-        gAReceber0a30.valor = "120.000,00";
+        Contas gAReceber0a30 = new Contas();
+        gAReceber0a30.titulo = getString(R.string.title_grafico_valor_ate_30);
+        gAReceber0a30.valor = empreendimento.valorAReceber0A30;
         lGrafico.add(gAReceber0a30);
 
-        Grafico gAReceber31a60 = new Grafico();
-        gAReceber31a60.descricao = "31 a 60 dd:";
-        gAReceber31a60.valor = "150.000,00";
+        Contas gAReceber31a60 = new Contas();
+        gAReceber31a60.titulo = getString(R.string.title_grafico_valor_ate_60);
+        gAReceber31a60.valor = empreendimento.valorAReceber31A60;
         lGrafico.add(gAReceber31a60);
 
-        Grafico gAReceber61a120 = new Grafico();
-        gAReceber61a120.descricao = "61 a 120 dd:";
-        gAReceber61a120.valor = "380.000,00";
+        Contas gAReceber61a120 = new Contas();
+        gAReceber61a120.titulo = getString(R.string.title_grafico_valor_ate_120);
+        gAReceber61a120.valor = empreendimento.valorAReceber61A120;
         lGrafico.add(gAReceber61a120);
 
-        Grafico gAReceber121 = new Grafico();
-        gAReceber121.descricao = "Acima  121 dd:";
-        gAReceber121.valor = "1.610.000,00";
+        Contas gAReceber121 = new Contas();
+        gAReceber121.titulo = getString(R.string.title_grafico_valor_acima_121);
+        gAReceber121.valor = empreendimento.valorAReceber121;
         lGrafico.add(gAReceber121);
 
-        Grafico gAPagar = new Grafico();
-        gAPagar.descricao = "(-)Valores a Pagar:";
-        gAPagar.valor = "3.840.000,00";
+        Contas gAPagar = new Contas();
+        gAPagar.titulo = getString(R.string.title_grafico_valor_pagar);
+        gAPagar.valor = empreendimento.valorAPagar;
         lGrafico.add(gAPagar);
 
-        Grafico gAPagar0a30 = new Grafico();
-        gAPagar0a30.descricao = "0 a 30 dd:";
-        gAPagar0a30.valor = "80.000,00";
+        Contas gAPagar0a30 = new Contas();
+        gAPagar0a30.titulo = getString(R.string.title_grafico_valor_ate_30);
+        gAPagar0a30.valor = empreendimento.valorAPagar0A30;
         lGrafico.add(gAPagar0a30);
 
-        Grafico gAPagar31a60 = new Grafico();
-        gAPagar31a60.descricao = "31 a 60 dd:";
-        gAPagar31a60.valor = "110.000,00";
+        Contas gAPagar31a60 = new Contas();
+        gAPagar31a60.titulo = getString(R.string.title_grafico_valor_ate_60);
+        gAPagar31a60.valor = empreendimento.valorAPagar31A60;
         lGrafico.add(gAPagar31a60);
 
-        Grafico gAPagar61a120 = new Grafico();
-        gAPagar61a120.descricao = "61 a 120 dd:";
-        gAPagar61a120.valor = "150.000,00";
+        Contas gAPagar61a120 = new Contas();
+        gAPagar61a120.titulo = getString(R.string.title_grafico_valor_ate_120);
+        gAPagar61a120.valor = empreendimento.valorAPagar61A120;
         lGrafico.add(gAPagar61a120);
 
-        Grafico gAPagar121 = new Grafico();
-        gAPagar121.descricao = "Acima  121 dd:";
-        gAPagar121.valor = "3.500.000,00";
+        Contas gAPagar121 = new Contas();
+        gAPagar121.titulo = getString(R.string.title_grafico_valor_acima_121);
+        gAPagar121.valor = empreendimento.valorAPagar121;
         lGrafico.add(gAPagar121);
 
-        Grafico gProjetado = new Grafico();
-        gProjetado.descricao = "(=)Fluxo Projetado:";
-        gProjetado.valor = "-1.580.000,00";
+        Contas gProjetado = new Contas();
+        gProjetado.titulo = getString(R.string.title_grafico_valor_projetado);
+        gProjetado.valor = empreendimento.valorFluxoProjetado;
         lGrafico.add(gProjetado);
 
-        Grafico gProjetado0a30 = new Grafico();
-        gProjetado0a30.descricao = "0 a 30 dd:";
-        gProjetado0a30.valor = "40.000,00";
+        Contas gProjetado0a30 = new Contas();
+        gProjetado0a30.titulo = getString(R.string.title_grafico_valor_ate_30);
+        gProjetado0a30.valor = empreendimento.valorFluxoProjetado0A30;
         lGrafico.add(gProjetado0a30);
 
-        Grafico gProjetado31a60 = new Grafico();
-        gProjetado31a60.descricao = "31 a 60 dd:";
-        gProjetado31a60.valor = "40.000,00";
+        Contas gProjetado31a60 = new Contas();
+        gProjetado31a60.titulo = getString(R.string.title_grafico_valor_ate_60);
+        gProjetado31a60.valor = empreendimento.valorFluxoProjetado31A60;
         lGrafico.add(gProjetado31a60);
 
-        Grafico gProjetado61a120 = new Grafico();
-        gProjetado61a120.descricao = "61 a 120 dd:";
-        gProjetado61a120.valor = "230.000,00";
+        Contas gProjetado61a120 = new Contas();
+        gProjetado61a120.titulo = getString(R.string.title_grafico_valor_ate_120);
+        gProjetado61a120.valor = empreendimento.valorFluxoProjetado61A120;
         lGrafico.add(gProjetado61a120);
 
-        Grafico gProjetado121 = new Grafico();
-        gProjetado121.descricao = "Acima  121 dd:";
-        gProjetado121.valor = "-1.890.000,00";
+        Contas gProjetado121 = new Contas();
+        gProjetado121.titulo = getString(R.string.title_grafico_valor_acima_121);
+        gProjetado121.valor = empreendimento.valorFluxoProjetado121;
         lGrafico.add(gProjetado121);
 
-        Grafico gAtual = new Grafico();
+        /*Contas gAtual = new Contas();
         gAtual.descricao = "Saldo atual :";
         gAtual.valor = "66.626,17";
         lGrafico.add(gAtual);
 
-        Grafico gBanco = new Grafico();
+        Contas gBanco = new Contas();
         gBanco.descricao = "BANCO ITAU:";
         gBanco.valor = "66.115,17";
         lGrafico.add(gBanco);
 
-        Grafico gFixo = new Grafico();
+        Contas gFixo = new Contas();
         gFixo.descricao = "FUNDO FIXO:";
         gFixo.valor = "511,00";
-        lGrafico.add(gFixo);
+        lGrafico.add(gFixo);*/
 
         adapter.atualizarLista(lGrafico);
     }

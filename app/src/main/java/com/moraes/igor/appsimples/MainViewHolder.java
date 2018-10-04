@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 class MainViewHolder extends RecyclerView.ViewHolder {
 
-    AppCompatTextView txtEmpreendimento;
-    AppCompatTextView txtEndereco;
-    AppCompatTextView txtResponsavelTecnico;
+    final AppCompatTextView txtEmpreendimento;
+    final AppCompatTextView txtEndereco;
+    final AppCompatTextView txtResponsavelTecnico;
 
     MainViewHolder(View itemView) {
         super(itemView);
