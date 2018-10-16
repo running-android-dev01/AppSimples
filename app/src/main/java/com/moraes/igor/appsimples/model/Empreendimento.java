@@ -10,6 +10,7 @@ public class Empreendimento {
     public int pavimentos;
     public int unidades;
     public double areaTotalTerreno;
+    public double areaTerreno;
     public String inicioObras;
     public String fimDasObras;
     public String entragaDasChaves;
@@ -17,13 +18,14 @@ public class Empreendimento {
     public long faltaParaTerminar;
     public int vendidas;
     public int disponiveis;
-    public int alugadas;
-    public int outras;
+    public int indisponivel;
     public double vgv;
     public double vendido;
     public double aVender;
+    public double diferencaVgv;
     public double recebido;
     public double aReceber;
+    public double recFinanciadoOutros;
 
     public double valorAReceber;
     public double valorAReceber0A30;
@@ -43,5 +45,8 @@ public class Empreendimento {
     public double valorFluxoProjetado61A120;
     public double valorFluxoProjetado121;
 
+    public double valorSaldo;
+
     public List<Unidades> lUnidades;
+    public List<SaldoConta> lSaldoConta;
 }

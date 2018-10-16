@@ -18,9 +18,8 @@
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="0dp"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text=""
             android:gravity="center"
             style="@style/Body3"
@@ -33,6 +32,7 @@
             android:text="@string/title_cliente_contratos"
             android:gravity="center"
             style="@style/Body3"
+            android:visibility="gone"
             />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -42,6 +42,7 @@
             android:text="@string/title_cliente_a_receber"
             android:gravity="center"
             style="@style/Body3"
+            android:visibility="gone"
             />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -58,6 +59,32 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/title_cliente_percentual"
+            android:gravity="center"
+            style="@style/Body3"
+            android:visibility="gone"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="@string/title_cliente_ult_recebida"
+            android:gravity="center"
+            style="@style/Body3"
+            />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="@string/title_cliente_atraso"
+            android:gravity="center"
+            style="@style/Body3"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="@string/title_cliente_qtd"
             android:gravity="center"
             style="@style/Body3"
             />

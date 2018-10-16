@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 
 import com.moraes.igor.appsimples.model.Contas;
 import com.moraes.igor.appsimples.model.Empreendimento;
+import com.moraes.igor.appsimples.model.SaldoConta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -155,21 +156,20 @@ public class DetalhesGraficoFragment extends Fragment {
         gProjetado121.valor = empreendimento.valorFluxoProjetado121;
         lGrafico.add(gProjetado121);
 
-        /*Contas gAtual = new Contas();
-        gAtual.descricao = "Saldo atual :";
-        gAtual.valor = "66.626,17";
-        lGrafico.add(gAtual);
+        Contas gSaldo = new Contas();
+        gSaldo.titulo = getString(R.string.title_saldo_atual);
+        gSaldo.valor = empreendimento.valorSaldo;
+        lGrafico.add(gSaldo);
 
-        Contas gBanco = new Contas();
-        gBanco.descricao = "BANCO ITAU:";
-        gBanco.valor = "66.115,17";
-        lGrafico.add(gBanco);
 
-        Contas gFixo = new Contas();
-        gFixo.descricao = "FUNDO FIXO:";
-        gFixo.valor = "511,00";
-        lGrafico.add(gFixo);*/
+        for (SaldoConta saldoConta: empreendimento.lSaldoConta) {
 
+            Contas gConta = new Contas();
+            gConta.titulo = saldoConta.conta;
+            gConta.valor = saldoConta.saldo;
+            lGrafico.add(gConta);
+
+        }
         adapter.atualizarLista(lGrafico);
     }
 }

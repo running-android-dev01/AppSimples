@@ -21,7 +21,7 @@ public class CostCentersResult implements Serializable {
     public int idCompany;
 
     @JsonIgnore
-    public final String endereco = "Avenida Viera Souto, 1250 - Copacabana - 22000-000 Rio de Janeiro";
+    public String endereco = "Avenida Viera Souto, 1250 - Copacabana - 22000-000 Rio de Janeiro";
 
     @JsonIgnore
     public final String responsavel = "Eduardo Henriques";

@@ -7,9 +7,8 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txtApto"
-        android:layout_width="0dp"
+        android:layout_width="40dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:text=""
         android:gravity="center"
         style="@style/Body4"
@@ -23,6 +22,7 @@
         android:text="@string/title_cliente_contratos"
         android:gravity="center"
         style="@style/Body4"
+        android:visibility="gone"
         />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -33,6 +33,7 @@
         android:text="@string/title_cliente_a_receber"
         android:gravity="center"
         style="@style/Body4"
+        android:visibility="gone"
         />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -51,6 +52,35 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="@string/title_cliente_percentual"
+        android:gravity="center"
+        style="@style/Body4"
+        android:visibility="gone"
+        />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtUltimaRecebido"
+        style="@style/Body4"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="11/01/2018" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtAtraso"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="@string/title_cliente_atraso"
+        android:gravity="center"
+        style="@style/Body4"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtQuantidade"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:text="@string/title_cliente_qtd"
         android:gravity="center"
         style="@style/Body4"
         />

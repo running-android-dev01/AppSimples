@@ -7,19 +7,24 @@ import android.view.ViewGroup;
 
 import com.moraes.igor.appsimples.model.Unidades;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 class DetalhesClienteAdapter extends RecyclerView.Adapter<DetalhesClienteViewHolder> {
-    //private final Context context;
+    private final Context context;
     private List<Unidades> lUnidades;
     private final Locale current;
+    DecimalFormat dForat = new DecimalFormat(",##0.00");
+    DecimalFormat iForat = new DecimalFormat(",##0");
 
     DetalhesClienteAdapter(Context context) {
-        //this.context = context;
+        this.context = context;
         this.current = context.getApplicationContext().getResources().getConfiguration().locale;
     }
 
@@ -45,12 +50,39 @@ class DetalhesClienteAdapter extends RecyclerView.Adapter<DetalhesClienteViewHol
     public void onBindViewHolder(@NonNull DetalhesClienteViewHolder viewHolder, int position) {
         final Unidades unidades = lUnidades.get(position);
 
+
+
         viewHolder.txtApto.setText(unidades.unidade);
-        viewHolder.txtContrato.setText(String.format(current, "%.2f", unidades.contrato));
-        viewHolder.txtReceber.setText(String.format(current, "%.2f", unidades.recebido));
-        viewHolder.txtRecebido.setText(String.format(current, "%.2f", unidades.aReceber));
-        viewHolder.txtPercentRecebido.setText(String.format(current, "%.2f", unidades.percentualRecebido));
+        viewHolder.txtContrato.setTextColor(ContextCompat.getColor(context, unidades.contrato>=0.0?R.color.secondaryTextColor:R.color.thirdTextColor));
+        viewHolder.txtContrato.setText(dForat.format(unidades.contrato));
+        viewHolder.txtReceber.setTextColor(ContextCompat.getColor(context, unidades.recebido>=0.0?R.color.secondaryTextColor:R.color.thirdTextColor));
+        viewHolder.txtReceber.setText(dForat.format(unidades.recebido));
+        viewHolder.txtRecebido.setTextColor(ContextCompat.getColor(context, unidades.aReceber>=0.0?R.color.secondaryTextColor:R.color.thirdTextColor));
+        viewHolder.txtRecebido.setText(dForat.format(unidades.aReceber));
+
+        viewHolder.txtUltimaRecebido.setText(unidades.ultimaRecebido);
+
+        viewHolder.txtAtraso.setTextColor(ContextCompat.getColor(context, unidades.atraso>=0.0?R.color.secondaryTextColor:R.color.thirdTextColor));
+        viewHolder.txtAtraso.setText(dForat.format(unidades.atraso));
+
+        if (unidades.qtdAtraso>0){
+            viewHolder.txtQuantidade.setText(iForat.format(unidades.qtdAtraso));
+        }else{
+            viewHolder.txtQuantidade.setText("");
+        }
+        viewHolder.txtPercentRecebido.setText(dForat.format(unidades.percentualRecebido));
+
+
         viewHolder.txtSituacao.setText(unidades.situacao);
+        if (unidades.contrato>0 && unidades.contrato==unidades.recebido){
+            viewHolder.txtSituacao.setText("Quitado");
+        }else if (unidades.qtdAtraso>0){
+            viewHolder.txtSituacao.setText("Atrasado");
+        }else if (unidades.contrato>0){
+            viewHolder.txtSituacao.setText("OK");
+        }
+
+
     }
 
     @Override

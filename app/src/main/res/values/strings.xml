@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">SeeEnge</string>
     <string name="title_empreendimento">Empreendimento</string>
+    <string name="title_unidades">Unidades</string>
     <string name="title_cliente">Cliente</string>
     <string name="title_grafico">Finanças</string>
     <string name="title_configuracao">Configuração</string>
@@ -10,6 +11,9 @@
     <string name="title_cliente_a_receber">A Receber</string>
     <string name="title_cliente_recebido">Recebido</string>
     <string name="title_cliente_percentual">% Recebido</string>
+    <string name="title_cliente_ult_recebida">Ult. Receb.</string>
+    <string name="title_cliente_atraso">Atraso</string>
+    <string name="title_cliente_qtd">Qtd.</string>
     <string name="title_cliente_situacao">Situação</string>
 
 
@@ -17,6 +21,7 @@
     <string name="title_empreendimento_pavimento">Pavimentos:</string>
     <string name="title_empreendimento_unidades">Unidades:</string>
     <string name="title_empreendimento_area_total">Área total do terreno:</string>
+    <string name="title_empreendimento_area">Área do terreno:</string>
     <string name="title_empreendimento_inicio_obras">Inicio das Obras:</string>
     <string name="title_empreendimento_fim_obras">Fim das Obras:</string>
     <string name="title_empreendimento_entrega_chaves">Entrega das Chaves:</string>
@@ -29,8 +34,10 @@
     <string name="title_empreendimento_vgv">VGV:</string>
     <string name="title_empreendimento_vendido">Vendido:</string>
     <string name="title_empreendimento_a_vender">A Vender:</string>
-    <string name="title_empreendimento_recebido">Recebido:</string>
-    <string name="title_empreendimento_a_receber">A Receber:</string>
+    <string name="title_empreendimento_diferenca_vgv">Diferença VGV:</string>
+    <string name="title_empreendimento_recebido">Valor Recebido:</string>
+    <string name="title_empreendimento_a_receber">Saldo a Receber Corrigido:</string>
+    <string name="title_empreendimento_rec_financiado">Rec. Financeira/Outros:</string>
 
     <string name="title_grafico_valor_receber">(+)Valores a Receber:</string>
     <string name="title_grafico_valor_pagar">(-)Valores a Pagar:</string>
@@ -39,4 +46,6 @@
     <string name="title_grafico_valor_ate_60">31 a 60 dd:</string>
     <string name="title_grafico_valor_ate_120">61 a 120 dd:</string>
     <string name="title_grafico_valor_acima_121">Acima  121 dd:</string>
+
+    <string name="title_saldo_atual">Saldo Atual:</string>
 </resources>

@@ -8,4 +8,12 @@
     <color name="secondaryDarkColor">#b61827</color>
     <color name="primaryTextColor">#ffffff</color>
     <color name="secondaryTextColor">#000000</color>
+    <color name="thirdTextColor">#FF0000</color>
+
+
+    <color name="lightSkyBlue">#87CEFA</color>
+    <color name="lightSalmon">#FFA07A</color>
+    <color name="lightGreen">#90EE90</color>
+    <color name="Khaki">#F0E68C</color>
+
 </resources>

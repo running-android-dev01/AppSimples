@@ -6,10 +6,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class BillsInstallment {
+public class AccountsBalances {
     @JsonProperty("resultSetMetadata")
     public ResultSetMetadata resultSetMetadata;
 
     @JsonProperty("results")
-    public List<BillsInstallmentResult> billsResultList;
+    public List<AccountsBalancesResult> accountsBalancesResultList;
 }

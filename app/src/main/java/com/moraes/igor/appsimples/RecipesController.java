@@ -3,6 +3,7 @@ package com.moraes.igor.appsimples;
 import android.util.Log;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.moraes.igor.appsimples.Json.AccountsBalances;
 import com.moraes.igor.appsimples.Json.BillsInstallment;
 import com.moraes.igor.appsimples.Json.CostCenters;
 import com.moraes.igor.appsimples.Json.ReceivableBillsInstallment;
@@ -153,6 +154,19 @@ class RecipesController {
             Log.e(this.getClass().getName(), "ERRO = ", e);
         }
         return billsInstallment;
+    }
+
+    AccountsBalances getAccountsBalances() {
+        AccountsBalances accountsBalances = null;
+        try {
+            String json = getJson("https://api.sienge.com.br/construsoft/public/api/v1/accounts-balances?balanceDate=2018-01-01");
+
+            ObjectMapper mapper = new ObjectMapper();
+            accountsBalances = mapper.readValue(json, AccountsBalances.class);
+        } catch (Exception e) {
+            Log.e(this.getClass().getName(), "ERRO = ", e);
+        }
+        return accountsBalances;
     }
 
 }

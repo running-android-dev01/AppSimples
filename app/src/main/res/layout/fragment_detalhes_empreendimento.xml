@@ -155,6 +155,33 @@
 
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtAreaTerrenoDesc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text="@string/title_empreendimento_area"
+                    style="@style/Body1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txtAreaTerreno"
+                    app:layout_constraintEnd_toStartOf="@+id/txtAreaTerreno"
+                    android:gravity="end"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtAreaTerreno"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text=""
+                    style="@style/Body2"
+                    app:layout_constraintStart_toEndOf="@+id/txtAreaTerrenoDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/txtUnidades"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:gravity="end"
+                    />
+
+
+
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/txtAreaTotalTerrenoDesc"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -174,10 +201,13 @@
                     android:text=""
                     style="@style/Body2"
                     app:layout_constraintStart_toEndOf="@+id/txtAreaTotalTerrenoDesc"
-                    app:layout_constraintTop_toBottomOf="@+id/txtUnidades"
+                    app:layout_constraintTop_toBottomOf="@+id/txtAreaTerreno"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:gravity="end"
                     />
+
+
+
 
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -312,32 +342,6 @@
 
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtVendidasDesc"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:padding="2dp"
-                    android:text="@string/title_empreendimento_vendidas"
-                    style="@style/Body1"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txtVendidas"
-                    app:layout_constraintEnd_toStartOf="@+id/txtVendidas"
-                    android:gravity="end"
-                    />
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtVendidas"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:padding="2dp"
-                    android:text=""
-                    style="@style/Body2"
-                    app:layout_constraintStart_toEndOf="@+id/txtVendidasDesc"
-                    app:layout_constraintTop_toBottomOf="@+id/txtFaltamATerminar"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:gravity="end"
-                    />
-
-
-                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/txtDisponivelDesc"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -357,63 +361,62 @@
                     android:text=""
                     style="@style/Body2"
                     app:layout_constraintStart_toEndOf="@+id/txtDisponivelDesc"
-                    app:layout_constraintTop_toBottomOf="@+id/txtVendidas"
+                    app:layout_constraintTop_toBottomOf="@+id/txtFaltamATerminar"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:gravity="end"
                     />
 
-
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtAlugadasDesc"
+                    android:id="@+id/txtVendidasDesc"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
-                    android:text="@string/title_empreendimento_alugadas"
+                    android:text="@string/title_empreendimento_vendidas"
                     style="@style/Body1"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txtAlugadas"
-                    app:layout_constraintEnd_toStartOf="@+id/txtAlugadas"
+                    app:layout_constraintTop_toTopOf="@+id/txtVendidas"
+                    app:layout_constraintEnd_toStartOf="@+id/txtVendidas"
                     android:gravity="end"
                     />
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtAlugadas"
+                    android:id="@+id/txtVendidas"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
                     android:text=""
                     style="@style/Body2"
-                    app:layout_constraintStart_toEndOf="@+id/txtAlugadasDesc"
+                    app:layout_constraintStart_toEndOf="@+id/txtVendidasDesc"
                     app:layout_constraintTop_toBottomOf="@+id/txtDisponivel"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:gravity="end"
                     />
 
 
-
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtOutrasDesc"
+                    android:id="@+id/txtIndisponivelDesc"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
-                    android:text="@string/title_empreendimento_outras"
+                    android:text="Indisponivel"
                     style="@style/Body1"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txtOutras"
-                    app:layout_constraintEnd_toStartOf="@+id/txtOutras"
+                    app:layout_constraintTop_toTopOf="@+id/txtIndisponivel"
+                    app:layout_constraintEnd_toStartOf="@+id/txtIndisponivel"
                     android:gravity="end"
                     />
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtOutras"
+                    android:id="@+id/txtIndisponivel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
                     android:text=""
                     style="@style/Body2"
-                    app:layout_constraintStart_toEndOf="@+id/txtOutrasDesc"
-                    app:layout_constraintTop_toBottomOf="@+id/txtAlugadas"
+                    app:layout_constraintStart_toEndOf="@+id/txtIndisponivelDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/txtVendidas"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:gravity="end"
                     />
+
 
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -436,7 +439,7 @@
                     android:text=""
                     style="@style/Body2"
                     app:layout_constraintStart_toEndOf="@+id/txtVgvDesc"
-                    app:layout_constraintTop_toBottomOf="@+id/txtOutras"
+                    app:layout_constraintTop_toBottomOf="@+id/txtIndisponivel"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:gravity="end"
                     />
@@ -494,31 +497,33 @@
                     />
 
 
-
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtRecebidoDesc"
+                    android:id="@+id/txtDiferencaVgvDesc"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
-                    android:text="@string/title_empreendimento_recebido"
+                    android:text="@string/title_empreendimento_diferenca_vgv"
                     style="@style/Body1"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txtRecebido"
-                    app:layout_constraintEnd_toStartOf="@+id/txtRecebido"
+                    app:layout_constraintTop_toTopOf="@+id/txtDiferencaVgv"
+                    app:layout_constraintEnd_toStartOf="@+id/txtDiferencaVgv"
                     android:gravity="end"
                     />
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtRecebido"
+                    android:id="@+id/txtDiferencaVgv"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
                     android:text=""
                     style="@style/Body2"
-                    app:layout_constraintStart_toEndOf="@+id/txtRecebidoDesc"
+                    app:layout_constraintStart_toEndOf="@+id/txtDiferencaVgvDesc"
                     app:layout_constraintTop_toBottomOf="@+id/txtAVender"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:gravity="end"
                     />
+
+
+
 
 
 
@@ -542,6 +547,57 @@
                     android:text=""
                     style="@style/Body2"
                     app:layout_constraintStart_toEndOf="@+id/txtAReceberDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/txtDiferencaVgv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:gravity="end"
+                    />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtRecebidoDesc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text="@string/title_empreendimento_recebido"
+                    style="@style/Body1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txtRecebido"
+                    app:layout_constraintEnd_toStartOf="@+id/txtRecebido"
+                    android:gravity="end"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtRecebido"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text=""
+                    style="@style/Body2"
+                    app:layout_constraintStart_toEndOf="@+id/txtRecebidoDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/txtAReceber"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:gravity="end"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtRecFinanciadoDesc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text="@string/title_empreendimento_rec_financiado"
+                    style="@style/Body1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txtRecFinanciado"
+                    app:layout_constraintEnd_toStartOf="@+id/txtRecFinanciado"
+                    android:gravity="end"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtRecFinanciado"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text=""
+                    style="@style/Body2"
+                    app:layout_constraintStart_toEndOf="@+id/txtRecFinanciadoDesc"
                     app:layout_constraintTop_toBottomOf="@+id/txtRecebido"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:gravity="end"

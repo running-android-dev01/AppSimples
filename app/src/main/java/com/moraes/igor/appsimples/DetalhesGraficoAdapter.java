@@ -8,23 +8,23 @@ import android.view.ViewGroup;
 
 import com.moraes.igor.appsimples.model.Contas;
 
+import java.text.DecimalFormat;
 import java.util.List;
-import java.util.Locale;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 class DetalhesGraficoAdapter extends RecyclerView.Adapter<DetalhesGraficoViewHolder> {
-    //private final Context context;
+    private final Context context;
     private List<Contas> lContas;
-    private final Locale current;
+    DecimalFormat dForat = new DecimalFormat(",##0.00");
 
     DetalhesGraficoAdapter(Context context) {
-        //this.context = context;
-        this.current = context.getApplicationContext().getResources().getConfiguration().locale;
+        this.context = context;
     }
 
-    public void atualizarLista(List<Contas> lContas) {
+    void atualizarLista(List<Contas> lContas) {
         this.lContas = lContas;
         notifyDataSetChanged();
     }
@@ -47,7 +47,9 @@ class DetalhesGraficoAdapter extends RecyclerView.Adapter<DetalhesGraficoViewHol
         final Contas grafico = lContas.get(position);
 
         viewHolder.txtDescricao.setText(grafico.titulo);
-        viewHolder.txtValor.setText(String.format(current, "%.2f", grafico.valor));
+
+        viewHolder.txtValor.setTextColor(ContextCompat.getColor(context, grafico.valor>=0.0?R.color.secondaryTextColor:R.color.thirdTextColor));
+        viewHolder.txtValor.setText(dForat.format(grafico.valor));
     }
 
     @Override

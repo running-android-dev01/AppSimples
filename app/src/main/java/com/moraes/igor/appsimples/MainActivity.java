@@ -101,6 +101,10 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 List<CostCentersResult> lCostCentersResult = new ArrayList<>();
                 for (CostCentersResult result: costCenters.costCentersResults) {
                     if (result.id==12){
+                        result.endereco = "Avenida Viera Souto, 1250 - Copacabana - 22000-000 Rio de Janeiro";
+                        lCostCentersResult.add(result);
+                    }else if (result.id==22){
+                        result.endereco = "Avenida Aberlado Bueno - Jacarepaguá - 22075-022 Rio de Janeiro";
                         lCostCentersResult.add(result);
                     }
                 }

@@ -7,6 +7,11 @@
         android:title="@string/title_empreendimento" />
 
     <item
+        android:id="@+id/navigation_unidades"
+        android:icon="@drawable/ic_folder_black_24dp"
+        android:title="@string/title_unidades" />
+
+    <item
         android:id="@+id/navigation_cliente"
         android:icon="@drawable/ic_group_black_24dp"
         android:title="@string/title_cliente" />
