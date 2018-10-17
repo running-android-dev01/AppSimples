@@ -429,7 +429,8 @@ public class DetalhesActivity extends AppCompatActivity
                             unidades.situacao = "Vendida";
                             break;
                         case "L":
-                            unidades.situacao = "Locada";
+                            //unidades.situacao = "Locada";
+                            unidades.situacao = "Indisponível";
                             break;
                         case "C":
                             //unidades.situacao = "Reservada";
@@ -491,7 +492,8 @@ public class DetalhesActivity extends AppCompatActivity
                     saldoConta.conta = accountsBalancesResult.accountNumber;
                     saldoConta.saldo = accountsBalancesResult.amount;
 
-                    if (accountsBalancesResult.amount>0){
+
+                    if (accountsBalancesResult.accountNumber.equals("123456-7") || accountsBalancesResult.accountNumber.equals("CAIXA")){
                         empreendimento.valorSaldo += accountsBalancesResult.amount;
 
                         empreendimento.lSaldoConta.add(saldoConta);

@@ -85,6 +85,8 @@ class DetalhesClienteAdapter extends RecyclerView.Adapter<DetalhesClienteViewHol
             viewHolder.txtSituacao.setText("OK");
         }else if (unidades.codSituacao.equals("D")){
             viewHolder.itemView.setBackgroundColor(ContextCompat.getColor(context, R.color.lightGreen));
+        }else if (!unidades.codSituacao.equals("V")){
+            viewHolder.itemView.setBackgroundColor(ContextCompat.getColor(context, R.color.Khaki));
         }
 
     }
