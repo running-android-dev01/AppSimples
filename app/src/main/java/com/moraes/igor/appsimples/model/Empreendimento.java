@@ -20,6 +20,7 @@ public class Empreendimento {
     public int disponiveis;
     public int indisponivel;
     public double vgv;
+    public double percentVgv;
     public double vendido;
     public double aVender;
     public double diferencaVgv;

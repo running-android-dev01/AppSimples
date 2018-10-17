@@ -20,7 +20,7 @@
     <string name="title_empreendimento_valor_projetado">Valor m2 projetado:</string>
     <string name="title_empreendimento_pavimento">Pavimentos:</string>
     <string name="title_empreendimento_unidades">Unidades:</string>
-    <string name="title_empreendimento_area_total">Área total do terreno:</string>
+    <string name="title_empreendimento_area_total">Área Construída:</string>
     <string name="title_empreendimento_area">Área do terreno:</string>
     <string name="title_empreendimento_inicio_obras">Inicio das Obras:</string>
     <string name="title_empreendimento_fim_obras">Fim das Obras:</string>
@@ -33,7 +33,7 @@
     <string name="title_empreendimento_outras">Outras:</string>
     <string name="title_empreendimento_vgv">VGV:</string>
     <string name="title_empreendimento_vendido">Vendido:</string>
-    <string name="title_empreendimento_a_vender">A Vender:</string>
+    <string name="title_empreendimento_a_vender">Estoque:</string>
     <string name="title_empreendimento_diferenca_vgv">Diferença VGV:</string>
     <string name="title_empreendimento_recebido">Valor Recebido:</string>
     <string name="title_empreendimento_a_receber">Saldo a Receber Corrigido:</string>

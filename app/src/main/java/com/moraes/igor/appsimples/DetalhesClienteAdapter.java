@@ -55,10 +55,10 @@ class DetalhesClienteAdapter extends RecyclerView.Adapter<DetalhesClienteViewHol
         viewHolder.txtApto.setText(unidades.unidade);
         viewHolder.txtContrato.setTextColor(ContextCompat.getColor(context, unidades.contrato>=0.0?R.color.secondaryTextColor:R.color.thirdTextColor));
         viewHolder.txtContrato.setText(dForat.format(unidades.contrato));
-        viewHolder.txtReceber.setTextColor(ContextCompat.getColor(context, unidades.recebido>=0.0?R.color.secondaryTextColor:R.color.thirdTextColor));
-        viewHolder.txtReceber.setText(dForat.format(unidades.recebido));
-        viewHolder.txtRecebido.setTextColor(ContextCompat.getColor(context, unidades.aReceber>=0.0?R.color.secondaryTextColor:R.color.thirdTextColor));
-        viewHolder.txtRecebido.setText(dForat.format(unidades.aReceber));
+        viewHolder.txtReceber.setTextColor(ContextCompat.getColor(context, unidades.aReceber>=0.0?R.color.secondaryTextColor:R.color.thirdTextColor));
+        viewHolder.txtReceber.setText(dForat.format(unidades.aReceber));
+        viewHolder.txtRecebido.setTextColor(ContextCompat.getColor(context, unidades.recebido>=0.0?R.color.secondaryTextColor:R.color.thirdTextColor));
+        viewHolder.txtRecebido.setText(dForat.format(unidades.recebido));
 
         viewHolder.txtUltimaRecebido.setText(unidades.ultimaRecebido);
 
@@ -74,14 +74,18 @@ class DetalhesClienteAdapter extends RecyclerView.Adapter<DetalhesClienteViewHol
 
 
         viewHolder.txtSituacao.setText(unidades.situacao);
+        viewHolder.itemView.setBackgroundColor(ContextCompat.getColor(context, R.color.white));
         if (unidades.contrato>0 && unidades.contrato==unidades.recebido){
             viewHolder.txtSituacao.setText("Quitado");
+            viewHolder.itemView.setBackgroundColor(ContextCompat.getColor(context, R.color.lightSkyBlue));
         }else if (unidades.qtdAtraso>0){
             viewHolder.txtSituacao.setText("Atrasado");
+            viewHolder.itemView.setBackgroundColor(ContextCompat.getColor(context, R.color.lightSalmon));
         }else if (unidades.contrato>0){
             viewHolder.txtSituacao.setText("OK");
+        }else if (unidades.codSituacao.equals("D")){
+            viewHolder.itemView.setBackgroundColor(ContextCompat.getColor(context, R.color.lightGreen));
         }
-
 
     }
 

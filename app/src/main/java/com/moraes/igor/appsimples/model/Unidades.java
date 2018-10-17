@@ -18,4 +18,6 @@ public class Unidades {
     public String codSituacao;
     public double area;
     public double valorVgv;
+
+    public double diferencaVgv;
 }
