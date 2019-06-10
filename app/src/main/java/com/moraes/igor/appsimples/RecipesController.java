@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.moraes.igor.appsimples.Json.AccountsBalances;
 import com.moraes.igor.appsimples.Json.BillsInstallment;
 import com.moraes.igor.appsimples.Json.CostCenters;
+import com.moraes.igor.appsimples.Json.Enterprises;
+import com.moraes.igor.appsimples.Json.EnterprisesResult;
 import com.moraes.igor.appsimples.Json.ReceivableBillsInstallment;
 import com.moraes.igor.appsimples.Json.SalesContracts;
 import com.moraes.igor.appsimples.Json.Units;
@@ -167,6 +169,34 @@ class RecipesController {
             Log.e(this.getClass().getName(), "ERRO = ", e);
         }
         return accountsBalances;
+    }
+
+
+    Enterprises getEnterprises() {
+        Enterprises enterprises = null;
+        try {
+            String json = getJson("https://api.sienge.com.br/construsoft/public/api/v1/enterprises");
+
+            ObjectMapper mapper = new ObjectMapper();
+            enterprises = mapper.readValue(json, Enterprises.class);
+        } catch (Exception e) {
+            Log.e(this.getClass().getName(), "ERRO = ", e);
+        }
+        return enterprises;
+    }
+
+
+    EnterprisesResult getEnterprises(int id) {
+        EnterprisesResult enterprisesResult = null;
+        try {
+            String json = getJson("https://api.sienge.com.br/construsoft/public/api/v1/enterprises/" + id);
+
+            ObjectMapper mapper = new ObjectMapper();
+            enterprisesResult = mapper.readValue(json, EnterprisesResult.class);
+        } catch (Exception e) {
+            Log.e(this.getClass().getName(), "ERRO = ", e);
+        }
+        return enterprisesResult;
     }
 
 }

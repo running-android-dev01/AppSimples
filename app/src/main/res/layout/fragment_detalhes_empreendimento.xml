@@ -155,38 +155,11 @@
 
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtAreaTerrenoDesc"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:padding="2dp"
-                    android:text="@string/title_empreendimento_area"
-                    style="@style/Body1"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txtAreaTerreno"
-                    app:layout_constraintEnd_toStartOf="@+id/txtAreaTerreno"
-                    android:gravity="end"
-                    />
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtAreaTerreno"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:padding="2dp"
-                    android:text=""
-                    style="@style/Body2"
-                    app:layout_constraintStart_toEndOf="@+id/txtAreaTerrenoDesc"
-                    app:layout_constraintTop_toBottomOf="@+id/txtUnidades"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:gravity="end"
-                    />
-
-
-
-                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/txtAreaTotalTerrenoDesc"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
-                    android:text="@string/title_empreendimento_area_total"
+                    android:text="@string/title_empreendimento_area"
                     style="@style/Body1"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/txtAreaTotalTerreno"
@@ -201,7 +174,34 @@
                     android:text=""
                     style="@style/Body2"
                     app:layout_constraintStart_toEndOf="@+id/txtAreaTotalTerrenoDesc"
-                    app:layout_constraintTop_toBottomOf="@+id/txtAreaTerreno"
+                    app:layout_constraintTop_toBottomOf="@+id/txtUnidades"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:gravity="end"
+                    />
+
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtAreaTerrenoDesc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text="@string/title_empreendimento_area_total"
+                    style="@style/Body1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txtAreaTerreno"
+                    app:layout_constraintEnd_toStartOf="@+id/txtAreaTerreno"
+                    android:gravity="end"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtAreaTerreno"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text=""
+                    style="@style/Body2"
+                    app:layout_constraintStart_toEndOf="@+id/txtAreaTerrenoDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/txtAreaTotalTerrenoDesc"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:gravity="end"
                     />
@@ -230,7 +230,7 @@
                     android:text=""
                     style="@style/Body2"
                     app:layout_constraintStart_toEndOf="@+id/txtInicioDasObrasDesc"
-                    app:layout_constraintTop_toBottomOf="@+id/txtAreaTotalTerreno"
+                    app:layout_constraintTop_toBottomOf="@+id/txtAreaTerrenoDesc"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:gravity="end"
                     />

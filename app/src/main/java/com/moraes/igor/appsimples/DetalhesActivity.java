@@ -11,6 +11,7 @@ import com.moraes.igor.appsimples.Json.BillsInstallment;
 import com.moraes.igor.appsimples.Json.BillsInstallmentResult;
 import com.moraes.igor.appsimples.Json.CostCenters;
 import com.moraes.igor.appsimples.Json.CostCentersResult;
+import com.moraes.igor.appsimples.Json.EnterprisesResult;
 import com.moraes.igor.appsimples.Json.ReceivableBillsInstallment;
 import com.moraes.igor.appsimples.Json.ReceivableBillsInstallmentResult;
 import com.moraes.igor.appsimples.Json.SalesContractUnits;
@@ -29,6 +30,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -54,7 +56,7 @@ public class DetalhesActivity extends AppCompatActivity
     private final static String TAG = DetalhesActivity.class.getName();
     public final static String EMPREENDIMENTO = TAG + ".empreendimento" ;
 
-    private CostCentersResult costCentersResult;
+    private EnterprisesResult enterprisesResult;
 
 
     public Empreendimento empreendimento;
@@ -92,10 +94,10 @@ public class DetalhesActivity extends AppCompatActivity
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        costCentersResult = (CostCentersResult) getIntent().getSerializableExtra(EMPREENDIMENTO);
+        enterprisesResult = (EnterprisesResult) getIntent().getSerializableExtra(EMPREENDIMENTO);
 
-        txtEmpreendimento.setText(costCentersResult.name);
-        txtEndereco.setText(costCentersResult.endereco);
+        txtEmpreendimento.setText(enterprisesResult.name);
+        txtEndereco.setText(enterprisesResult.adress);
 
         new carregarDados().execute();
     }
@@ -160,13 +162,14 @@ public class DetalhesActivity extends AppCompatActivity
             List<BillsInstallmentResult> billsInstallmentResults = new ArrayList<>();
 
             RecipesController recipesController = new RecipesController();
+
             SalesContracts salesContracts = recipesController.getSalesContracts();
             Units units = recipesController.getUnits();
             AccountsBalances accountsBalances = recipesController.getAccountsBalances();
 
             if (salesContracts!=null){
                 for (SalesContractsResult s: salesContracts.costCentersResults) {
-                    if (s.enterpriseId==costCentersResult.id){
+                    if (s.enterpriseId==enterprisesResult.id){
                         ReceivableBillsInstallment receivableBillsInstallment = recipesController.getReceivableBillsInstallment(s.receivableBillId);
                         if (receivableBillsInstallment!=null){
                             receivableBillsInstallmentResults.addAll(receivableBillsInstallment.costCentersResults);
@@ -197,55 +200,44 @@ public class DetalhesActivity extends AppCompatActivity
             Calendar cFimObras = Calendar.getInstance();
             Calendar cEntregaChaves = Calendar.getInstance();
 
+            try{
+                if (enterprisesResult.constructionDetails!=null && !TextUtils.isEmpty(enterprisesResult.constructionDetails.startDate)){
+                    Date convertedDate = df2.parse(enterprisesResult.constructionDetails.startDate);
+                    cInicioObras.setTime(convertedDate);
+                }
 
-            cInicioObras.set(Calendar.YEAR, 2019);
-            cInicioObras.set(Calendar.MONTH, 0);
-            cInicioObras.set(Calendar.DAY_OF_MONTH, 1);
 
-            cFimObras.set(Calendar.YEAR, 2019);
-            cFimObras.set(Calendar.MONTH, 6);
-            cFimObras.set(Calendar.DAY_OF_MONTH, 1);
+                if (enterprisesResult.constructionDetails!=null && !TextUtils.isEmpty(enterprisesResult.constructionDetails.endDate)){
+                    Date convertedDate = df2.parse(enterprisesResult.constructionDetails.endDate);
+                    cFimObras.setTime(convertedDate);
+                }
 
-            cEntregaChaves.set(Calendar.YEAR, 2019);
-            cEntregaChaves.set(Calendar.MONTH, 5);
-            cEntregaChaves.set(Calendar.DAY_OF_MONTH, 30);
 
-            if (costCentersResult.id==12){
-                cInicioObras.set(Calendar.YEAR, 2018);
-                cInicioObras.set(Calendar.MONTH, 0);
-                cInicioObras.set(Calendar.DAY_OF_MONTH, 1);
+                if (enterprisesResult.salesDetails!=null && !TextUtils.isEmpty(enterprisesResult.salesDetails.keysDelivery)){
+                    Date convertedDate = df2.parse(enterprisesResult.salesDetails.keysDelivery);
+                    cEntregaChaves.setTime(convertedDate);
+                }
 
-                cFimObras.set(Calendar.YEAR, 2019);
-                cFimObras.set(Calendar.MONTH, 6);
-                cFimObras.set(Calendar.DAY_OF_MONTH, 1);
-
-                cEntregaChaves.set(Calendar.YEAR, 2019);
-                cEntregaChaves.set(Calendar.MONTH, 6);
-                cEntregaChaves.set(Calendar.DAY_OF_MONTH, 15);
-            }else if (costCentersResult.id==22){
-                cInicioObras.set(Calendar.YEAR, 2018);
-                cInicioObras.set(Calendar.MONTH, 2);
-                cInicioObras.set(Calendar.DAY_OF_MONTH, 1);
-
-                cFimObras.set(Calendar.YEAR, 2020);
-                cFimObras.set(Calendar.MONTH, 5);
-                cFimObras.set(Calendar.DAY_OF_MONTH, 1);
-
-                cEntregaChaves.set(Calendar.YEAR, 2020);
-                cEntregaChaves.set(Calendar.MONTH, 0);
-                cEntregaChaves.set(Calendar.DAY_OF_MONTH, 1);
+            } catch (ParseException e) {
+                Log.e(TAG, e.getMessage(), e);
             }
+
+            //cEntregaChaves.set(Calendar.YEAR, 2019);
+            //cEntregaChaves.set(Calendar.MONTH, 5);
+            //cEntregaChaves.set(Calendar.DAY_OF_MONTH, 30);
 
 
             empreendimento = new Empreendimento();
-            empreendimento.empreendimento = costCentersResult.name;
-            empreendimento.endereco = costCentersResult.endereco;
+            empreendimento.empreendimento = enterprisesResult.name;
+            empreendimento.endereco = enterprisesResult.adress;
 
-            empreendimento.valorMProjetado = 0.0;
-            empreendimento.pavimentos = 0;
-            empreendimento.unidades = 0;
-            empreendimento.areaTotalTerreno = 0;
-            empreendimento.areaTerreno = 0;
+            if (enterprisesResult.constructionDetails!=null){
+                empreendimento.valorMProjetado = 0.0;
+                empreendimento.pavimentos = Integer.parseInt(enterprisesResult.constructionDetails.numberOfFloors);
+                empreendimento.unidades = 0;
+                empreendimento.areaTotalTerreno = Double.parseDouble(enterprisesResult.constructionDetails.totalArea);
+                empreendimento.areaTerreno = Double.parseDouble(enterprisesResult.constructionDetails.landSArea);
+            }
 
             empreendimento.inicioObras = df1.format(cInicioObras.getTime());
             empreendimento.fimDasObras = df1.format(cFimObras.getTime());
@@ -259,7 +251,12 @@ public class DetalhesActivity extends AppCompatActivity
             empreendimento.disponiveis = 0;
             empreendimento.indisponivel = 0;
 
-            empreendimento.vgv = 4800000.00;
+            //empreendimento.vgv = 4800000.00;
+            empreendimento.vgv = 0;
+            if (enterprisesResult.salesDetails!=null && !TextUtils.isEmpty(enterprisesResult.salesDetails.generalSalesValue)){
+                empreendimento.vgv = Double.parseDouble(enterprisesResult.salesDetails.generalSalesValue);
+            }
+
             empreendimento.percentVgv = 0.0;
             empreendimento.vendido = 0.0;
             empreendimento.aVender = 0.0;
@@ -287,19 +284,6 @@ public class DetalhesActivity extends AppCompatActivity
             empreendimento.valorFluxoProjetado121 = 0.0;
 
             empreendimento.lUnidades = new ArrayList<>();
-
-
-            if (costCentersResult.id==12){
-                empreendimento.areaTotalTerreno = 1750;
-                empreendimento.areaTerreno = 1000;
-                empreendimento.vgv = 9581000.00;
-                empreendimento.pavimentos = 4;
-            }else if (costCentersResult.id==22){
-                empreendimento.areaTotalTerreno = 3150;
-                empreendimento.areaTerreno = 800;
-                empreendimento.vgv = 14284016.91;
-                empreendimento.pavimentos = 6;
-            }
 
             for (BillsInstallmentResult billsInstallmentResult: billsInstallmentResults) {
                 empreendimento.valorAPagar += billsInstallmentResult.amount;
@@ -329,161 +313,148 @@ public class DetalhesActivity extends AppCompatActivity
 
             Calendar ultimaParcela = null;
             empreendimento.aVender = 0;
-            for (UnitsResult unitsResult: units.unitsResults) {
-                if (unitsResult.enterpriseId==costCentersResult.id){
-                    Unidades unidades = new Unidades();
-                    unidades.unidade = unitsResult.name;
-                    unidades.qtdAtraso = 0;
-                    unidades.atraso = 0;
-                    unidades.ultimaRecebido = "";
-                    unidades.diferencaVgv = 0.0;
+            if (units!=null){
+                for (UnitsResult unitsResult: units.unitsResults) {
+                    if (unitsResult.enterpriseId==enterprisesResult.id){
+                        Unidades unidades = new Unidades();
+                        unidades.unidade = unitsResult.name;
+                        unidades.qtdAtraso = 0;
+                        unidades.atraso = 0;
+                        unidades.ultimaRecebido = "";
+                        unidades.diferencaVgv = 0.0;
 
-                    switch (unitsResult.commercialStock) {
-                        case "V":
-                            empreendimento.vendidas += 1;
-                            break;
-                        case "D":
-                            empreendimento.disponiveis += 1;
-                            break;
-                        default:
-                            empreendimento.indisponivel += 1;
-                            break;
-                    }
+                        switch (unitsResult.commercialStock) {
+                            case "V":
+                                empreendimento.vendidas += 1;
+                                break;
+                            case "D":
+                                empreendimento.disponiveis += 1;
+                                break;
+                            default:
+                                empreendimento.indisponivel += 1;
+                                break;
+                        }
 
 
 
-                    for (SalesContractsResult salesContractsResult: Objects.requireNonNull(salesContracts).costCentersResults) {
-                        if (salesContractsResult.enterpriseId==costCentersResult.id){
-                            for (SalesContractUnits salesContractUnits: salesContractsResult.salesContractUnits) {
-                                if (unitsResult.name.equals(salesContractUnits.name)){
-                                    unidades.contrato = salesContractsResult.totalSellingValue;
-                                    unidades.aReceber = 0.0;
-                                    for (ReceivableBillsInstallmentResult receivableBillsInstallmentResult: receivableBillsInstallmentResults) {
-                                        if (salesContractsResult.receivableBillId==receivableBillsInstallmentResult.receivableBillId){
-                                            unidades.aReceber += receivableBillsInstallmentResult.balanceDue;
-                                            empreendimento.valorAReceber += receivableBillsInstallmentResult.balanceDue;
-                                            try {
-                                                Date convertedDate = df2.parse(receivableBillsInstallmentResult.dueDate);
-                                                Calendar cal = Calendar.getInstance();
-                                                cal.setTime(convertedDate);
+                        for (SalesContractsResult salesContractsResult: Objects.requireNonNull(salesContracts).costCentersResults) {
+                            if (salesContractsResult.enterpriseId==enterprisesResult.id){
+                                for (SalesContractUnits salesContractUnits: salesContractsResult.salesContractUnits) {
+                                    if (unitsResult.name.equals(salesContractUnits.name)){
+                                        unidades.contrato = salesContractsResult.totalSellingValue;
+                                        unidades.aReceber = 0.0;
+                                        for (ReceivableBillsInstallmentResult receivableBillsInstallmentResult: receivableBillsInstallmentResults) {
+                                            if (salesContractsResult.receivableBillId==receivableBillsInstallmentResult.receivableBillId){
+                                                unidades.aReceber += receivableBillsInstallmentResult.balanceDue;
+                                                empreendimento.valorAReceber += receivableBillsInstallmentResult.balanceDue;
+                                                try {
+                                                    Date convertedDate = df2.parse(receivableBillsInstallmentResult.dueDate);
+                                                    Calendar cal = Calendar.getInstance();
+                                                    cal.setTime(convertedDate);
 
-                                                if (ultimaParcela==null && receivableBillsInstallmentResult.balanceDue==0){
-                                                    ultimaParcela = Calendar.getInstance();
-                                                    ultimaParcela.setTime(convertedDate);
+                                                    if (ultimaParcela==null && receivableBillsInstallmentResult.balanceDue==0){
+                                                        ultimaParcela = Calendar.getInstance();
+                                                        ultimaParcela.setTime(convertedDate);
 
-                                                    unidades.ultimaRecebido = df1.format(ultimaParcela.getTime());
-                                                }else if (ultimaParcela!=null && ultimaParcela.compareTo(cal)<=0 &&  receivableBillsInstallmentResult.balanceDue==0 ){
-                                                    ultimaParcela = Calendar.getInstance();
-                                                    ultimaParcela.setTime(convertedDate);
+                                                        unidades.ultimaRecebido = df1.format(ultimaParcela.getTime());
+                                                    }else if (ultimaParcela!=null && ultimaParcela.compareTo(cal)<=0 &&  receivableBillsInstallmentResult.balanceDue==0 ){
+                                                        ultimaParcela = Calendar.getInstance();
+                                                        ultimaParcela.setTime(convertedDate);
 
-                                                    unidades.ultimaRecebido = df1.format(ultimaParcela.getTime());
+                                                        unidades.ultimaRecebido = df1.format(ultimaParcela.getTime());
+                                                    }
+
+                                                    long tempo = TimeUnit.MILLISECONDS.toDays(cal.getTimeInMillis() - hoje.getTimeInMillis());
+                                                    if (tempo>120){
+                                                        empreendimento.valorAReceber121 += receivableBillsInstallmentResult.balanceDue;
+                                                    }else if (tempo>60){
+                                                        empreendimento.valorAReceber61A120 += receivableBillsInstallmentResult.balanceDue;
+                                                    }else if (tempo>30){
+                                                        empreendimento.valorAReceber31A60 += receivableBillsInstallmentResult.balanceDue;
+                                                    }else {
+                                                        empreendimento.valorAReceber0A30 += receivableBillsInstallmentResult.balanceDue;
+                                                    }
+
+
+
+                                                    if (tempo<0 && receivableBillsInstallmentResult.balanceDue>0){
+                                                        unidades.qtdAtraso += 1;
+                                                        unidades.atraso += receivableBillsInstallmentResult.balanceDue;
+                                                    }
+                                                } catch (ParseException e) {
+                                                    // TODO Auto-generated catch block
                                                 }
-
-                                                long tempo = TimeUnit.MILLISECONDS.toDays(cal.getTimeInMillis() - hoje.getTimeInMillis());
-                                                if (tempo>120){
-                                                    empreendimento.valorAReceber121 += receivableBillsInstallmentResult.balanceDue;
-                                                }else if (tempo>60){
-                                                    empreendimento.valorAReceber61A120 += receivableBillsInstallmentResult.balanceDue;
-                                                }else if (tempo>30){
-                                                    empreendimento.valorAReceber31A60 += receivableBillsInstallmentResult.balanceDue;
-                                                }else {
-                                                    empreendimento.valorAReceber0A30 += receivableBillsInstallmentResult.balanceDue;
-                                                }
-
-
-
-                                                if (tempo<0 && receivableBillsInstallmentResult.balanceDue>0){
-                                                    unidades.qtdAtraso += 1;
-                                                    unidades.atraso += receivableBillsInstallmentResult.balanceDue;
-                                                }
-                                            } catch (ParseException e) {
-                                                // TODO Auto-generated catch block
                                             }
                                         }
+
+                                        unidades.recebido = unidades.contrato-unidades.aReceber;
+
+                                        empreendimento.recebido += unidades.recebido;
+                                        empreendimento.aReceber += unidades.aReceber;
+
+                                        empreendimento.vendido += unidades.contrato;
+                                        empreendimento.recFinanciadoOutros += (unidades.recebido + unidades.aReceber);
                                     }
-
-                                    unidades.recebido = unidades.contrato-unidades.aReceber;
-
-                                    empreendimento.recebido += unidades.recebido;
-                                    empreendimento.aReceber += unidades.aReceber;
-
-                                    //empreendimento.vendido += (unidades.recebido + unidades.aReceber);
-                                    empreendimento.vendido += unidades.contrato;
-                                    empreendimento.recFinanciadoOutros += (unidades.recebido + unidades.aReceber);
                                 }
                             }
                         }
-                    }
 
-                    unidades.percentualRecebido = 0.0;
-                    if (unidades.contrato>0){
-                        unidades.percentualRecebido = (unidades.recebido/unidades.contrato)*100;
-                    }
+                        unidades.percentualRecebido = 0.0;
+                        if (unidades.contrato>0){
+                            unidades.percentualRecebido = (unidades.recebido/unidades.contrato)*100;
+                        }
 
-                    unidades.codSituacao = unitsResult.commercialStock;
-                    switch (unitsResult.commercialStock) {
-                        case "D":
-                            unidades.situacao = "Disponível";
-                            break;
-                        case "V":
-                            unidades.situacao = "Vendida";
-                            break;
-                        case "L":
-                            //unidades.situacao = "Locada";
-                            unidades.situacao = "Indisponível";
-                            break;
-                        case "C":
-                            //unidades.situacao = "Reservada";
-                            unidades.situacao = "Indisponível";
-                            break;
-                        case "R":
-                            //unidades.situacao = "Reserva Técnica";
-                            unidades.situacao = "Indisponível";
-                            break;
-                        case "E":
-                            //unidades.situacao = "Permuta";
-                            unidades.situacao = "Indisponível";
-                            break;
-                        case "M":
-                            //unidades.situacao = "Mutuo";
-                            unidades.situacao = "Indisponível";
-                            break;
-                        case "P":
-                            //unidades.situacao = "Proposta";
-                            unidades.situacao = "Indisponível";
-                            break;
-                        case "T":
-                            //unidades.situacao = "Transferido";
-                            unidades.situacao = "Indisponível";
-                            break;
-                        case "G":
-                            //unidades.situacao = "Vendido/Terceiros";
-                            unidades.situacao = "Indisponível";
-                            break;
-                    }
+                        unidades.codSituacao = unitsResult.commercialStock;
+                        switch (unitsResult.commercialStock) {
+                            case "D":
+                                unidades.situacao = "Disponível";
+                                break;
+                            case "V":
+                                unidades.situacao = "Vendida";
+                                break;
+                            case "L":
+                                unidades.situacao = "Indisponível";
+                                break;
+                            case "C":
+                                unidades.situacao = "Indisponível";
+                                break;
+                            case "R":
+                                unidades.situacao = "Indisponível";
+                                break;
+                            case "E":
+                                unidades.situacao = "Indisponível";
+                                break;
+                            case "M":
+                                unidades.situacao = "Indisponível";
+                                break;
+                            case "P":
+                                unidades.situacao = "Indisponível";
+                                break;
+                            case "T":
+                                unidades.situacao = "Indisponível";
+                                break;
+                            case "G":
+                                unidades.situacao = "Indisponível";
+                                break;
+                        }
 
-                    //empreendimento.vgv += unitsResult.generalSaleValueFraction;
-                    empreendimento.percentVgv += unitsResult.generalSaleValueFraction;
-                    unidades.valorVgv = empreendimento.vgv*unitsResult.generalSaleValueFraction;
-                    //vgvDiferenca += unidades.valorVgv;
-                    unidades.area = (unitsResult.privateArea+unitsResult.commonArea);
-                    //empreendimento.areaTotalTerreno += unidades.area;
-                    if (unidades.contrato==0){
-                        empreendimento.aVender += unidades.valorVgv;
-                    }else{
-                        unidades.diferencaVgv = (unidades.contrato-unidades.valorVgv);
-                    }
+                        empreendimento.percentVgv += unitsResult.generalSaleValueFraction;
+                        unidades.valorVgv = empreendimento.vgv*unitsResult.generalSaleValueFraction;
+                        unidades.area = (unitsResult.privateArea+unitsResult.commonArea);
+                        if (unidades.contrato==0){
+                            empreendimento.aVender += unidades.valorVgv;
+                        }else{
+                            unidades.diferencaVgv = (unidades.contrato-unidades.valorVgv);
+                        }
 
-                    empreendimento.diferencaVgv += unidades.diferencaVgv;
-                    empreendimento.lUnidades.add(unidades);
+                        empreendimento.diferencaVgv += unidades.diferencaVgv;
+                        empreendimento.lUnidades.add(unidades);
+                    }
                 }
             }
 
 
-            //empreendimento.recFinanciadoOutros = (empreendimento.recebido+empreendimento.aReceber)-empreendimento.vendido;
-
             empreendimento.recFinanciadoOutros = empreendimento.aReceber-empreendimento.recebido;
-            //empreendimento.diferencaVgv = ((empreendimento.vgv*empreendimento.percentVgv)-empreendimento.vgv);
             empreendimento.valorSaldo = 0.0;
             empreendimento.lSaldoConta = new ArrayList<>();
             if (accountsBalances!=null){
@@ -505,10 +476,7 @@ public class DetalhesActivity extends AppCompatActivity
             if (empreendimento.areaTotalTerreno>0.0){
                 empreendimento.valorMProjetado = empreendimento.vgv/empreendimento.areaTotalTerreno;
             }
-            //empreendimento.aVender = empreendimento.vgv - empreendimento.vendido;
-
             empreendimento.unidades = empreendimento.lUnidades.size();
-            //empreendimento.diferencaVgv = empreendimento.vgv - (empreendimento.vendido+empreendimento.aVender);
 
 
             empreendimento.valorFluxoProjetado = empreendimento.valorAReceber-empreendimento.valorAPagar;

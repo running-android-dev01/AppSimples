@@ -2,10 +2,11 @@ package com.moraes.igor.appsimples;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.moraes.igor.appsimples.Json.CostCentersResult;
+import com.moraes.igor.appsimples.Json.EnterprisesResult;
 
 import java.util.List;
 
@@ -13,15 +14,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 class MainAdapter extends RecyclerView.Adapter<MainViewHolder> {
-    private List<CostCentersResult> lCostCentersResult;
+    private List<EnterprisesResult> lEnterprisesResult;
     private final Context context;
 
     MainAdapter(Context context){
         this.context = context;
     }
 
-    void atualizarLista(List<CostCentersResult> lCostCentersResult){
-        this.lCostCentersResult = lCostCentersResult;
+    void atualizarLista(List<EnterprisesResult> lEnterprisesResult){
+        this.lEnterprisesResult = lEnterprisesResult;
         notifyDataSetChanged();
     }
 
@@ -33,23 +34,28 @@ class MainAdapter extends RecyclerView.Adapter<MainViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MainViewHolder holder, int position) {
-        final CostCentersResult costCentersResult = lCostCentersResult.get(position);
+        final EnterprisesResult enterprisesResult = lEnterprisesResult.get(position);
 
 
-        holder.txtEmpreendimento.setText(costCentersResult.name);
-        holder.txtEndereco.setText(costCentersResult.endereco);
-        holder.txtResponsavelTecnico.setText(String.format("Responsavel tecnico: %s", costCentersResult.responsavel));
+        holder.txtEmpreendimento.setText(enterprisesResult.name);
+        holder.txtEndereco.setText(enterprisesResult.adress);
+
+        //holder.txtResponsavelTecnico.setText(String.format("Responsavel tecnico: %s", costCentersResult.responsavel));
+        holder.txtResponsavelTecnico.setText("");
+        if (enterprisesResult.constructionDetails!=null && !TextUtils.isEmpty(enterprisesResult.constructionDetails.technicalManager)){
+            holder.txtResponsavelTecnico.setText(String.format("Responsavel tecnico: %s", enterprisesResult.constructionDetails.technicalManager));
+        }
 
 
         holder.itemView.setOnClickListener(view -> {
             Intent i = new Intent(context, DetalhesActivity.class);
-            i.putExtra(DetalhesActivity.EMPREENDIMENTO, costCentersResult);
+            i.putExtra(DetalhesActivity.EMPREENDIMENTO, enterprisesResult);
             context.startActivity(i);
         });
     }
 
     @Override
     public int getItemCount() {
-        return lCostCentersResult != null ? lCostCentersResult.size() : 0;
+        return lEnterprisesResult != null ? lEnterprisesResult.size() : 0;
     }
 }
