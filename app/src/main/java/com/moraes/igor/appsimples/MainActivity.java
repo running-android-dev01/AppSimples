@@ -18,6 +18,7 @@ import com.moraes.igor.appsimples.Json.EnterprisesResult;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
     private SwipeRefreshLayout mSwipeRefreshLayout;
@@ -94,7 +95,10 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             Enterprises enterprises = recipesController.getEnterprises();
             for (EnterprisesResult result: enterprises.enterprisesResults) {
                 result = recipesController.getEnterprises(result.id);
-                lEnterprisesResult.add(result);
+                if (result.salesDetails!=null && result.salesDetails.generalSalesValue!=null &&  Double.parseDouble(result.salesDetails.generalSalesValue)>0.0){
+                    lEnterprisesResult.add(result);
+                }
+
             }
             return lEnterprisesResult;
         }

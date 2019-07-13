@@ -244,8 +244,8 @@ public class DetalhesActivity extends AppCompatActivity
             empreendimento.entragaDasChaves = df1.format(cEntregaChaves.getTime());
 
 
-            empreendimento.duracaoAteMomento = TimeUnit.MILLISECONDS.toDays(cFimObras.getTimeInMillis() - cInicioObras.getTimeInMillis());
-            empreendimento.faltaParaTerminar = TimeUnit.MILLISECONDS.toDays(hoje.getTimeInMillis() - cInicioObras.getTimeInMillis());
+            empreendimento.duracaoAteMomento = TimeUnit.MILLISECONDS.toDays(hoje.getTimeInMillis() - cInicioObras.getTimeInMillis());
+            empreendimento.faltaParaTerminar = TimeUnit.MILLISECONDS.toDays(cFimObras.getTimeInMillis() - hoje.getTimeInMillis());
 
             empreendimento.vendidas = 0;
             empreendimento.disponiveis = 0;
@@ -392,7 +392,7 @@ public class DetalhesActivity extends AppCompatActivity
                                         empreendimento.recebido += unidades.recebido;
                                         empreendimento.aReceber += unidades.aReceber;
 
-                                        empreendimento.vendido += unidades.contrato;
+                                        //empreendimento.vendido += unidades.contrato;
                                         empreendimento.recFinanciadoOutros += (unidades.recebido + unidades.aReceber);
                                     }
                                 }
@@ -444,8 +444,13 @@ public class DetalhesActivity extends AppCompatActivity
                         if (unidades.contrato==0){
                             empreendimento.aVender += unidades.valorVgv;
                         }else{
-                            unidades.diferencaVgv = (unidades.contrato-unidades.valorVgv);
+                            //unidades.diferencaVgv = (unidades.contrato-unidades.valorVgv);
+                            unidades.diferencaVgv = 0;
                         }
+                        if (unitsResult.commercialStock.equals("V")){
+                            empreendimento.vendido += unidades.valorVgv;
+                        }
+
 
                         empreendimento.diferencaVgv += unidades.diferencaVgv;
                         empreendimento.lUnidades.add(unidades);
