@@ -1,5 +1,6 @@
 package com.moraes.igor.appsimples;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -7,10 +8,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.moraes.igor.appsimples.Json.CostCenters;
 import com.moraes.igor.appsimples.Json.CostCentersResult;
 import com.moraes.igor.appsimples.Json.Enterprises;
@@ -43,9 +51,12 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
         mSwipeRefreshLayout.post(() -> {
 
-            mSwipeRefreshLayout.setRefreshing(true);
-            new carregarCentroCusto().execute();
+            carregarCentroCusto();
+
         });
+
+        Intent intent = new Intent(this, SeeEngeService.class);
+        startService(intent);
     }
 
     @Override
@@ -72,50 +83,30 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     @Override
     public void onRefresh() {
-        new carregarCentroCusto().execute();
+        carregarCentroCusto();
     }
 
-    class carregarCentroCusto extends AsyncTask<Void, String, List<EnterprisesResult>> {
-        //private ProgressDialog progresso;
-
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            //progresso = ProgressDialog.show(MainActivity.this, "", "Carregando dados");
-            mSwipeRefreshLayout.setRefreshing(true);
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected List<EnterprisesResult> doInBackground(Void... params) {
-            List<EnterprisesResult> lEnterprisesResult = new ArrayList<>();
-
-            RecipesController recipesController = new RecipesController();
-            Enterprises enterprises = recipesController.getEnterprises();
-            for (EnterprisesResult result: enterprises.enterprisesResults) {
-                result = recipesController.getEnterprises(result.id);
-                if (result.salesDetails!=null && result.salesDetails.generalSalesValue!=null &&  Double.parseDouble(result.salesDetails.generalSalesValue)>0.0){
-                    lEnterprisesResult.add(result);
-                }
-
-            }
-            return lEnterprisesResult;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        protected void onPostExecute(final List<EnterprisesResult> lEnterprisesResult) {
-            mSwipeRefreshLayout.setRefreshing(false);
-            adapter.atualizarLista(lEnterprisesResult);
-        }
-
-        @Override
-        protected void onProgressUpdate(String... values) {
-            super.onProgressUpdate(values);
-            //if (progresso != null) {
-            //    progresso.setMessage(values[0]);
-            //}
-        }
+    private void carregarCentroCusto(){
+        mSwipeRefreshLayout.setRefreshing(true);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Enterprises")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    List<EnterprisesResult> lEnterprisesResult = new ArrayList<>();
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                EnterprisesResult enterprisesResult = document.toObject(EnterprisesResult.class);
+                                lEnterprisesResult.add(enterprisesResult);
+                                Log.d("SeeEngeService", document.getId() + " => " + document.getData());
+                            }
+                        } else {
+                            Log.w("SeeEngeService", "Error getting documents.", task.getException());
+                        }
+                        mSwipeRefreshLayout.setRefreshing(false);
+                        adapter.atualizarLista(lEnterprisesResult);
+                    }
+                });
     }
 }

@@ -3,6 +3,7 @@ package com.moraes.igor.appsimples.model;
 import java.util.List;
 
 public class Empreendimento {
+    public int id;
     public String empreendimento;
     public String endereco;
 

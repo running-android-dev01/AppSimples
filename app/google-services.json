@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "48977367396",
+    "firebase_url": "https://appsimples-f2883.firebaseio.com",
+    "project_id": "appsimples-f2883",
+    "storage_bucket": "appsimples-f2883.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:48977367396:android:4ef97c78b55d4e3a312a71",
+        "android_client_info": {
+          "package_name": "com.moraes.igor.appsimples"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "48977367396-o5j9ca674hi6qhaks4om09ao4kggs9vc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.moraes.igor.appsimples",
+            "certificate_hash": "b3aa1e078a86e44bc3a9016d425a7157cc913313"
+          }
+        },
+        {
+          "client_id": "48977367396-iom3qvs6b6esgd37uepg7uj2989jjto7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.moraes.igor.appsimples",
+            "certificate_hash": "c205368067987ace27e9b1fc29339c0d369a0241"
+          }
+        },
+        {
+          "client_id": "48977367396-v5h3b0l3onurs01alrkvq199m7s787gu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAz3oDdKM508wpeiuez3w79rTqK6AcRogY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "48977367396-v5h3b0l3onurs01alrkvq199m7s787gu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

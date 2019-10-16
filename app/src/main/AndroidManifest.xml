@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <service
+            android:name=".SeeEngeService"
+            android:exported="false"></service>
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -22,7 +24,7 @@
         </activity>
         <activity
             android:name=".DetalhesActivity"
-            android:label="@string/app_name"></activity>
+            android:label="@string/app_name" />
     </application>
 
 </manifest>
